@@ -52,7 +52,7 @@ export const CatalogCard = () => {
               Теги
             </div>
           </div>
-          <p className='mt-2 text-justify text-xs leading-tight'>
+          <p className='mt-2 text-justify text-sm md:leading-tight'>
             Онлайн-показ Удалённая сделка Оплата в рублях Апартаменты в
             первоклассном жилом комплексе Ajman Creek Towers(Т1) в Аджмане!
             Высокий доход от инвестиций - 10% в $! Предоставим каталог
