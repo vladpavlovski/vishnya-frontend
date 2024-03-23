@@ -9,6 +9,11 @@ import {
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import filterIcon from '@/public/icons/filter.svg';
+import squareCardIcon from '@/public/icons/squareCardIcon.svg';
+import dispositionIcon from '@/public/icons/dispositionIcon.svg';
+import bathroomIcon from '@/public/icons/bathroomIcon.svg';
+import bedroomIcon from '@/public/icons/bedroomIcon.svg';
+
 interface CatalogWidgetProps {
   data: {
     title: string;
@@ -39,7 +44,49 @@ export const CatalogCard = () => {
           <h3 className='text-md font-bold text-secondary xl:text-xl'>
             Квартира в Аджмане, ОАЭ, 101 м2
           </h3>
-          <p className='text-sm'>place for icons</p>
+
+          <div className='my-2 flex flex-row justify-between'>
+            <span className='flex gap-1 text-sm'>
+              <Image
+                width={17}
+                height={17}
+                unoptimized
+                src={squareCardIcon}
+                alt={'Площадь'}
+              />
+              <span>101 м2</span>
+            </span>
+            <span className='flex gap-1 text-sm'>
+              <Image
+                width={17}
+                height={17}
+                unoptimized
+                src={dispositionIcon}
+                alt={'Комнат'}
+              />
+              <span>2</span>
+            </span>
+            <span className='flex gap-1 text-sm'>
+              <Image
+                width={17}
+                height={17}
+                unoptimized
+                src={bathroomIcon}
+                alt={'Ванных комнат'}
+              />
+              <span>1</span>
+            </span>
+            <span className='flex gap-1 text-sm'>
+              <Image
+                width={17}
+                height={17}
+                unoptimized
+                src={bedroomIcon}
+                alt={'Спальных комнат'}
+              />
+              <span>1</span>
+            </span>
+          </div>
           {/*{Tags}*/}
           <div className='mt-2 flex flex-row gap-1 xl:mt-4'>
             <div className='rounded bg-tagBackground px-2 py-1 text-xs xl:px-4 xl:py-2'>
