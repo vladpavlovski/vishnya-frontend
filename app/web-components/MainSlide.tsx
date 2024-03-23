@@ -1,5 +1,7 @@
 import HighlightedText from './HighlightedText';
 import { getStrapiMedia } from '../utils/api-helpers';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 interface Button {
   id: string;
@@ -38,12 +40,12 @@ interface MainSlideProps {
 export const SlideActions = () => {
   return (
     <div className='flex flex-col items-center gap-4 md:flex-row md:gap-8'>
-      <button className='max-w-fit rounded bg-secondary px-5 py-3 text-base text-white md:text-lg'>
-        Скачать каталог проектов
-      </button>
-      <button className='max-w-fit rounded bg-primary px-5 py-3 text-base text-white md:text-lg'>
-        Бесплатная консультация
-      </button>
+      <Button asChild className='bg-secondary px-20 hover:bg-primary'>
+        <Link href='#'>Скачать каталог проектов</Link>
+      </Button>
+      <Button asChild className='bg-primary px-20 hover:bg-secondary'>
+        <Link href='#'>Бесплатная консультация</Link>
+      </Button>
     </div>
   );
 };

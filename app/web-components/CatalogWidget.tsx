@@ -6,6 +6,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 interface CatalogWidgetProps {
   data: {
@@ -29,7 +31,7 @@ export const CatalogCard = () => {
           width={310}
           height={350}
         />
-        <div className='bg-projectCard rounded-md-br w-7/12 p-4 xl:p-6'>
+        <div className='rounded-md-br w-7/12 bg-projectCard p-4 xl:p-6'>
           {/*{Price}*/}
           <p className='text-xl xl:text-3xl'>
             <span className='mr-1 text-primary'>$</span>100 000
@@ -41,13 +43,13 @@ export const CatalogCard = () => {
           <p className='text-sm'>place for icons</p>
           {/*{Tags}*/}
           <div className='mt-2 flex flex-row gap-1 xl:mt-4'>
-            <div className='bg-tagBackground rounded px-2 py-1 text-xs xl:px-4 xl:py-2'>
+            <div className='rounded bg-tagBackground px-2 py-1 text-xs xl:px-4 xl:py-2'>
               Теги
             </div>
-            <div className='bg-tagBackground rounded px-2 py-1 text-xs xl:px-4 xl:py-2'>
+            <div className='rounded bg-tagBackground px-2 py-1 text-xs xl:px-4 xl:py-2'>
               Теги
             </div>
-            <div className='bg-tagBackground rounded px-2 py-1 text-xs xl:px-4 xl:py-2'>
+            <div className='rounded bg-tagBackground px-2 py-1 text-xs xl:px-4 xl:py-2'>
               Теги
             </div>
           </div>
@@ -57,9 +59,12 @@ export const CatalogCard = () => {
             Высокий доход от инвестиций - 10% в $! Предоставим каталог
             инвестора!
           </p>
-          <button className='mt-4 w-full rounded-md bg-secondary py-2 text-white xl:py-3'>
-            Подробнее
-          </button>
+          <Button
+            asChild
+            className='mt-4 w-full bg-secondary px-20 hover:bg-primary'
+          >
+            <Link href='#'>Подробнее</Link>
+          </Button>
         </div>
       </div>
     </div>
@@ -68,7 +73,7 @@ export const CatalogCard = () => {
 
 const Filters = () => {
   return (
-    <div className='bg-projectCard mb-6 mt-4 flex flex-row gap-2 p-6'>
+    <div className='mb-6 mt-4 flex flex-row gap-2 bg-projectCard p-6'>
       <Select>
         <SelectTrigger className='max-[220px] focus:ring-0 focus:ring-transparent focus:ring-offset-transparent'>
           <SelectValue placeholder='Купить' />
@@ -117,6 +122,9 @@ const Filters = () => {
           <SelectItem value='dark'>Арендовать</SelectItem>
         </SelectContent>
       </Select>
+      <Button className='bg-secondary hover:bg-primary'>
+        Показать предложения
+      </Button>
     </div>
   );
 };
@@ -148,12 +156,9 @@ export default function CatalogWidget({ data }: CatalogWidgetProps) {
           <CatalogCard />
         </div>
         <div className='mt-6 flex flex-row justify-center'>
-          <a
-            href='#'
-            className='max-w-fit rounded bg-primary px-20 py-3 align-middle text-base text-white md:text-lg'
-          >
-            В каталог →
-          </a>
+          <Button asChild className='bg-primary px-20 hover:bg-secondary'>
+            <Link href='#'>В каталог →</Link>
+          </Button>
         </div>
       </div>
     </section>
