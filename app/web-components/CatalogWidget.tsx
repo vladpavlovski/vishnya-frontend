@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-
+import filterIcon from '@/public/icons/filter.svg';
 interface CatalogWidgetProps {
   data: {
     title: string;
@@ -17,21 +17,20 @@ interface CatalogWidgetProps {
 }
 
 export const CatalogCard = () => {
-  //lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl
   return (
     <div className='w-full rounded'>
       <div className='rounded-t bg-secondary px-3 py-2 text-xs uppercase text-white'>
         БЫСТРАЯ ОКУПАЕМОСТЬ! ДОХОД ОТ 10%
       </div>
-      <div className='flex flex-row '>
+      <div className='flex flex-col md:flex-row'>
         <Image
-          className='rounded-md-bl h-full w-5/12'
+          className='md:rounded-md-bl max-h-48 w-full md:h-full'
           alt={'Title'}
           src='https://picsum.photos/310/350'
           width={310}
           height={350}
         />
-        <div className='rounded-md-br w-7/12 bg-projectCard p-4 xl:p-6'>
+        <div className='rounded-md-br bg-projectCard p-4 md:w-7/12 xl:p-6'>
           {/*{Price}*/}
           <p className='text-xl xl:text-3xl'>
             <span className='mr-1 text-primary'>$</span>100 000
@@ -73,7 +72,7 @@ export const CatalogCard = () => {
 
 const Filters = () => {
   return (
-    <div className='mb-6 mt-4 flex flex-row gap-2 bg-projectCard p-6'>
+    <div className='mb-6 mt-4 hidden flex-row gap-2 bg-projectCard p-6 md:flex'>
       <Select>
         <SelectTrigger className='max-[220px] focus:ring-0 focus:ring-transparent focus:ring-offset-transparent'>
           <SelectValue placeholder='Купить' />
@@ -132,12 +131,24 @@ const Filters = () => {
 export default function CatalogWidget({ data }: CatalogWidgetProps) {
   const { title, motivateQuestion } = data;
   return (
-    <section className='text-black-100 bg-background py-32'>
-      <div className='container mx-auto'>
-        <div className='flex flex-row justify-between align-middle'>
-          <h2 className='mb-4 text-2xl uppercase leading-none text-secondary md:text-3xl lg:mb-8 lg:text-4xl'>
-            {title}
-          </h2>
+    <section className='text-black-100 bg-background py-16 md:py-32'>
+      <div className=' mx-auto px-3 sm:container'>
+        <div className='mb-6 flex-1 flex-row flex-wrap justify-between align-middle md:mb-0'>
+          <div className='mb-3 flex items-end gap-2 md:mb-0'>
+            <Button asChild variant='link' className='rounded-none p-0'>
+              <Image
+                src={filterIcon}
+                alt={'Фильтр'}
+                unoptimized
+                width={36}
+                height={36}
+                className={'md:hidden'}
+              />
+            </Button>
+            <h2 className='text-lg uppercase leading-none text-secondary md:mb-4 md:text-2xl md:text-3xl lg:mb-8 lg:text-4xl'>
+              {title}
+            </h2>
+          </div>
           {motivateQuestion && (
             <a
               href='#'
@@ -149,7 +160,7 @@ export default function CatalogWidget({ data }: CatalogWidgetProps) {
         </div>
         {/*{Filters}*/}
         <Filters />
-        <div className='grid grid-cols-2 justify-between gap-4 align-middle xl:gap-8'>
+        <div className='grid grid-cols-1 justify-between gap-4 align-middle md:grid-cols-2 xl:gap-8'>
           <CatalogCard />
           <CatalogCard />
           <CatalogCard />
