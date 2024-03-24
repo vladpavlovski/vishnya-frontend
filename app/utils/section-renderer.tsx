@@ -1,6 +1,7 @@
 import Email from '@/app/web-components/Email';
 import MainSlide from '@/app/web-components/MainSlide';
 import CatalogWidget from '@/app/web-components/CatalogWidget';
+import { Mission } from '@/app/web-components/Mission';
 
 export function sectionRenderer(section: any, index: number) {
   switch (section.__component) {
@@ -10,6 +11,8 @@ export function sectionRenderer(section: any, index: number) {
       return <MainSlide key={index} data={section} />;
     case 'sections.catalog-widget':
       return <CatalogWidget key={index} data={section} />;
+    case 'sections.mission':
+      return <Mission key={index} data={section} />;
     default:
       return null;
   }
