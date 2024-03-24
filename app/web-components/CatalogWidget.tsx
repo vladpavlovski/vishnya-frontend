@@ -53,6 +53,7 @@ export const CatalogCard = () => {
                 unoptimized
                 src={squareCardIcon}
                 alt={'Площадь'}
+                style={{ width: 'auto', height: 'auto' }}
               />
               <span>101 м2</span>
             </span>
@@ -63,6 +64,7 @@ export const CatalogCard = () => {
                 unoptimized
                 src={dispositionIcon}
                 alt={'Комнат'}
+                style={{ width: 'auto', height: 'auto' }}
               />
               <span>2</span>
             </span>
@@ -73,6 +75,7 @@ export const CatalogCard = () => {
                 unoptimized
                 src={bathroomIcon}
                 alt={'Ванных комнат'}
+                style={{ width: 'auto', height: 'auto' }}
               />
               <span>1</span>
             </span>
@@ -83,6 +86,7 @@ export const CatalogCard = () => {
                 unoptimized
                 src={bedroomIcon}
                 alt={'Спальных комнат'}
+                style={{ width: 'auto', height: 'auto' }}
               />
               <span>1</span>
             </span>
