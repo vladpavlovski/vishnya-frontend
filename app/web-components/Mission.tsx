@@ -42,9 +42,9 @@ export const Mission = ({ data }: MissionProps) => {
         <h2 className='mb-5 text-4xl uppercase text-gray-800 text-secondary'>
           {title}
         </h2>
-        <p className='mt-4 max-w-2xl text-justify text-base text-gray-500 lg:mx-auto'>
+        <div className='mt-4 max-w-2xl text-justify text-base text-gray-500 lg:mx-auto'>
           <BlocksRenderer content={description} />
-        </p>
+        </div>
       </div>
       <div className='grid grid-cols-1 gap-8 md:grid-cols-3'>
         <div className='space-y-4'>
@@ -52,7 +52,7 @@ export const Mission = ({ data }: MissionProps) => {
             className='h-auto w-full'
             height='300'
             src={getStrapiURL(missionImage1.data.attributes.url)}
-            alt={missionImage1.data.attributes.alternativeText}
+            alt={missionImage1.data.attributes.alternativeText || missionTitle1}
             style={{
               aspectRatio: '400/300',
               objectFit: 'cover',
@@ -69,7 +69,7 @@ export const Mission = ({ data }: MissionProps) => {
             className='h-auto w-full'
             height='300'
             src={getStrapiURL(missionImage2.data.attributes.url)}
-            alt={missionImage2.data.attributes.alternativeText}
+            alt={missionImage2.data.attributes.alternativeText || missionTitle2}
             style={{
               aspectRatio: '400/300',
               objectFit: 'cover',
@@ -87,7 +87,7 @@ export const Mission = ({ data }: MissionProps) => {
             className='h-auto w-full'
             height='300'
             src={getStrapiURL(missionImage3.data.attributes.url)}
-            alt={missionImage3.data.attributes.alternativeText}
+            alt={missionImage3.data.attributes.alternativeText || missionTitle3}
             style={{
               aspectRatio: '400/300',
               objectFit: 'cover',
