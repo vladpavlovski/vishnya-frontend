@@ -182,7 +182,7 @@ const Filters = () => {
 export default function CatalogWidget({ data }: CatalogWidgetProps) {
   const { title, motivateQuestion } = data;
   return (
-    <section className='text-black-100 bg-background py-16 md:py-32'>
+    <section className='text-black-100 bg-background py-16 md:pb-8 md:pt-16'>
       <div className=' mx-auto px-3 sm:container'>
         <div className='mb-6 flex-1 flex-row flex-wrap justify-between align-middle md:mb-0'>
           <div className='mb-3 flex items-end gap-2 md:mb-0'>

@@ -15,7 +15,7 @@ export const Service = ({ data }: ServiceProps) => {
   const { title, description, backgroundImage, backgroundPhrase } = data;
 
   return (
-    <section className='mx-auto max-w-7xl bg-background md:py-16 lg:px-8'>
+    <section className='mx-auto max-w-7xl bg-background md:pb-16 md:pt-48 lg:px-8'>
       <div className='relative z-0'>
         <div
           style={{ letterSpacing: '0.55em' }}

@@ -36,7 +36,7 @@ export const Mission = ({ data }: MissionProps) => {
   } = data;
 
   return (
-    <section className='mx-auto max-w-7xl bg-background px-4 sm:px-6 md:py-32 lg:px-8'>
+    <section className='mx-auto max-w-7xl bg-background px-4 sm:px-6 md:py-8 lg:px-8'>
       <div className='py-16 text-center'>
         {/*<span className='text-xs uppercase text-primary'>{sectionName}</span>*/}
         <h2 className='mb-5 text-4xl uppercase text-gray-800 text-secondary'>
