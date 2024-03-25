@@ -34,9 +34,9 @@ export const AboutUs = ({ data }: AboutUsProps) => {
                   <h3 className='mb-4 text-center uppercase text-secondary'>
                     {advantage.title}
                   </h3>
-                  <p className='text-center text-sm text-gray-500'>
+                  <div className='text-center text-sm text-gray-500'>
                     <BlocksRenderer content={advantage.description} />
-                  </p>
+                  </div>
                 </div>
               </div>
             </li>
