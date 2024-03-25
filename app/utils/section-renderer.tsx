@@ -3,6 +3,7 @@ import MainSlide from '@/app/web-components/MainSlide';
 import CatalogWidget from '@/app/web-components/CatalogWidget';
 import { Mission } from '@/app/web-components/Mission';
 import { Service } from '@/app/web-components/Service';
+import { AboutUs } from '@/app/web-components/AboutUs';
 
 export function sectionRenderer(section: any, index: number) {
   switch (section.__component) {
@@ -16,6 +17,8 @@ export function sectionRenderer(section: any, index: number) {
       return <Mission key={index} data={section} />;
     case 'sections.service':
       return <Service key={index} data={section} />;
+    case 'sections.about-us':
+      return <AboutUs key={index} data={section} />;
     default:
       return null;
   }
