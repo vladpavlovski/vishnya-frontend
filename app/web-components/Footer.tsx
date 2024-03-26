@@ -91,9 +91,9 @@ export default function Footer({
       <div className='container mx-auto space-y-6 divide-y divide-gray-400 divide-opacity-50 px-0 md:space-y-12'>
         <div className='grid grid-cols-12'>
           {/*{First Column}*/}
-          <div className='col-span-6 pr-6 text-center md:col-span-3 md:text-left'>
+          <div className='col-span-6 px-3 pt-8 text-center md:col-span-3 md:text-left'>
             <ul>
-              <li className='flex'>
+              <li className='flex py-1'>
                 <Link
                   href={`tel:${contacts.officePhoneNumber1}`}
                   className='hover:text-primary'
@@ -101,7 +101,7 @@ export default function Footer({
                   {contacts.officePhoneNumber1}
                 </Link>
               </li>
-              <li className='flex'>
+              <li className='flex py-1'>
                 <Link
                   href={`tel:${contacts.officePhoneNumber2}`}
                   className='hover:text-primary'
@@ -109,7 +109,7 @@ export default function Footer({
                   {contacts.officePhoneNumber2}
                 </Link>
               </li>
-              <li className='flex'>
+              <li className='flex py-1'>
                 <Link
                   href={`mailto:${contacts.officeEmail}`}
                   className='hover:text-primary'
@@ -117,7 +117,7 @@ export default function Footer({
                   {contacts.officeEmail}
                 </Link>
               </li>
-              <li className='flex'>
+              <li className='flex py-1'>
                 <div className='hover:text-primary'>
                   {contacts.officeAddress}
                 </div>
@@ -126,7 +126,7 @@ export default function Footer({
           </div>
 
           {/*{Second Column}*/}
-          <div className='col-span-6 pr-6 text-center md:col-span-3 md:text-left'>
+          <div className='col-span-6 hidden px-3 pt-8 text-center md:col-span-3 md:flex md:text-left'>
             <ul>
               {menuLinks.map((link: FooterLink) => (
                 <FooterLink key={link.id} {...link} />
@@ -135,7 +135,7 @@ export default function Footer({
           </div>
 
           {/*{Third Column}*/}
-          <div className='col-span-6 pr-6 text-center md:col-span-3 md:text-left'>
+          <div className='col-span-6 hidden px-3 pt-8 text-center md:col-span-3 md:flex md:text-left'>
             <ul>
               {menuLinks2.map((link: FooterLink) => (
                 <FooterLink key={link.id} {...link} />
@@ -144,23 +144,23 @@ export default function Footer({
           </div>
 
           {/*{Fourth Column}*/}
-          <div className='col-span-6 pr-6 text-center md:col-span-3 md:text-center'>
-            <div className='flext text-3xl'>{contacts.officePhoneNumber3}</div>
+          <div className='col-span-6 px-3 pt-8 md:col-span-3'>
+            <div className='flex flex-nowrap justify-center text-xl md:text-2xl'>
+              {contacts.officePhoneNumber3}
+            </div>
             <div className='flex flex-wrap justify-center space-x-0 pt-0'>
-              {socialLinks.map((link: FooterLink) => {
-                return (
-                  <a
-                    key={link.id}
-                    rel='noopener noreferrer'
-                    href={link.url}
-                    title={link.text}
-                    target={link.newTab ? '_blank' : '_self'}
-                    className='flex h-20 w-20 items-center justify-center rounded-full'
-                  >
-                    <RenderSocialIcon social={link.social} size={40} />
-                  </a>
-                );
-              })}
+              {socialLinks.map((link: FooterLink) => (
+                <a
+                  key={link.id}
+                  rel='noopener noreferrer'
+                  href={link.url}
+                  title={link.text}
+                  target={link.newTab ? '_blank' : '_self'}
+                  className='flex h-12 w-12 items-center justify-center rounded-full'
+                >
+                  <RenderSocialIcon social={link.social} size={30} />
+                </a>
+              ))}
             </div>
           </div>
         </div>
