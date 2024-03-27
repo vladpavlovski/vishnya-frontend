@@ -82,3 +82,32 @@ export interface ContactProps {
   openHours: string;
   openDays: string;
 }
+
+export interface ShortProject {
+  id: string;
+  attributes: {
+    title: string;
+    description: string;
+    shortDescription: string;
+    square: string;
+    roomAmount: number;
+    bedroomAmount: number;
+    bathroomAmount: number;
+    location: string;
+    propertyType: string;
+    developer: string;
+    tags: Tag[];
+    disposition: Picture;
+    exteriorGallery: Picture[];
+    interiorGallery: Picture[];
+    address: string;
+    price: string;
+    cardHeaderTitle: string;
+    area: string;
+  };
+}
+
+export interface Tag {
+  id: number;
+  name: string;
+}

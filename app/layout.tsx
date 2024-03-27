@@ -6,7 +6,6 @@ import { FALLBACK_SEO } from '@/app/utils/constants';
 import Navbar from '@/app/web-components/Navbar';
 import Banner from '@/app/web-components/Banner';
 import Footer from '@/app/web-components/Footer';
-import { BrowserLogger } from '@/app/web-components/BrowserLogger';
 
 async function getGlobal(): Promise<any> {
   const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
