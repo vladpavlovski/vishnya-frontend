@@ -11,9 +11,11 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 interface CardRendererProps {
   projects: ShortProject[];
+  inCatalog?: boolean;
 }
 
 async function getProjects(filters: any): Promise<any> {
@@ -200,7 +202,10 @@ const Filters = ({ setProjects }: Props) => {
   );
 };
 
-export const CardRenderer = ({ projects }: CardRendererProps) => {
+export const CardRenderer = ({
+  projects,
+  inCatalog = false,
+}: CardRendererProps) => {
   const [projectsFromFilters, setProjectsFromFilters] =
     useState<ShortProject[]>(projects);
 
@@ -216,6 +221,16 @@ export const CardRenderer = ({ projects }: CardRendererProps) => {
       </div>
       {noProjectData && (
         <div className='text-center text-xl text-gray-400'>Нет данных</div>
+      )}
+      {inCatalog && (
+        <div className='mt-6 flex flex-row justify-center'>
+          <Button
+            onClick={() => {}}
+            className='bg-primary px-20 hover:bg-secondary'
+          >
+            Показать еще объекты
+          </Button>
+        </div>
       )}
     </>
   );

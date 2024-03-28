@@ -59,6 +59,8 @@ export interface Pagination {
   pageSize: number;
   pageCount: number;
   total: number;
+  limit: number;
+  start: number;
 }
 
 export interface Meta {
