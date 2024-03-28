@@ -13,12 +13,16 @@ import {
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import filterIcon from '@/public/icons/filter.svg';
+import Loader from '@/app/web-components/Loader';
 
 interface CardRendererProps {
   projects: ShortProject[];
   inCatalog?: boolean;
   title: string;
   motivateQuestion: string;
+  fetchMore?: () => void;
+  noMoreProjects?: boolean;
+  isLoading?: boolean;
 }
 
 async function getProjects(filters: any): Promise<any> {
@@ -210,6 +214,9 @@ export const CardRenderer = ({
   motivateQuestion,
   projects,
   inCatalog = false,
+  fetchMore,
+  noMoreProjects = false,
+  isLoading = false,
 }: CardRendererProps) => {
   const [projectsFromFilters, setProjectsFromFilters] =
     useState<ShortProject[]>(projects);
@@ -259,19 +266,20 @@ export const CardRenderer = ({
       {noProjectData && (
         <div className='text-center text-xl text-gray-400'>Нет данных</div>
       )}
-      {inCatalog && (
+      {isLoading && <Loader />}
+      {inCatalog && !noMoreProjects && (
         <div className='mt-6 flex flex-row justify-center'>
           <Button
-            onClick={() => {}}
+            onClick={fetchMore}
             className='bg-primary px-20 hover:bg-secondary'
           >
-            Показать еще объекты
+            {isLoading ? 'Грузим' : 'Показать еще объекты'}
           </Button>
         </div>
       )}
     </div>
   );
- 
+
   return inCatalog ? (
     <section className='text-black-100 bg-background py-16 md:pb-8 md:pt-16'>
       {children}

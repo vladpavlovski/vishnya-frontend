@@ -99,19 +99,22 @@ export default function CatalogRoute() {
 
   // const { data } = await fetchCatalogProjects();
   // console.log(data);
-  //TODO: CREATE A COMPONENT FOR THIS
+  // TODO: CREATE A COMPONENT FOR THIS
   // if (data.length === 0) return <div>Not Posts In this category</div>;
 
   // const { name, description } = data[0]?.attributes.category.data.attributes;
-
+  const noMoreProjects = meta
+    ? meta?.pagination.start + meta?.pagination.limit >= meta?.pagination.total
+    : false;
   return (
-    <div>
-      <CardRenderer
-        inCatalog
-        projects={data}
-        title={'Каталог'}
-        motivateQuestion={'Узнайте больше о проектах'}
-      />
-    </div>
+    <CardRenderer
+      inCatalog
+      projects={data}
+      title={'Каталог'}
+      motivateQuestion={'Узнайте больше о проектах'}
+      fetchMore={loadMoreProjects}
+      noMoreProjects={noMoreProjects}
+      isLoading={isLoading}
+    />
   );
 }
