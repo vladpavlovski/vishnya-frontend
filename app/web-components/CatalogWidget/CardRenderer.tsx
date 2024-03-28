@@ -1,6 +1,6 @@
 'use client';
 import { ShortProject } from '@/app/utils/model';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CatalogCard } from '@/app/web-components/CatalogWidget/CatalogCard';
 import { fetchAPI } from '@/app/utils/fetch-api';
 import {
@@ -11,11 +11,14 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+import Image from 'next/image';
+import filterIcon from '@/public/icons/filter.svg';
 
 interface CardRendererProps {
   projects: ShortProject[];
   inCatalog?: boolean;
+  title: string;
+  motivateQuestion: string;
 }
 
 async function getProjects(filters: any): Promise<any> {
@@ -203,6 +206,8 @@ const Filters = ({ setProjects }: Props) => {
 };
 
 export const CardRenderer = ({
+  title,
+  motivateQuestion,
   projects,
   inCatalog = false,
 }: CardRendererProps) => {
@@ -210,8 +215,40 @@ export const CardRenderer = ({
     useState<ShortProject[]>(projects);
 
   const noProjectData = projectsFromFilters?.length === 0;
-  return (
-    <>
+
+  useEffect(() => {
+    setProjectsFromFilters(projects);
+  }, [projects]);
+
+  const children = (
+    <div className=' mx-auto px-3 sm:container'>
+      <div className='mb-6 flex-1 flex-row flex-wrap justify-between align-middle md:mb-0'>
+        <div className='mb-3 flex items-end gap-2 md:mb-0'>
+          <Button asChild variant='link' className='rounded-none p-0'>
+            <Image
+              src={filterIcon}
+              alt={'Фильтр'}
+              unoptimized
+              width={36}
+              height={36}
+              className={'md:hidden'}
+              style={{
+                width: 'auto',
+                height: 'auto',
+              }}
+            />
+          </Button>
+          <h2 className='text-lg uppercase leading-none text-secondary md:mb-4 md:text-2xl lg:mb-8 lg:text-4xl'>
+            {title}
+          </h2>
+        </div>
+        {motivateQuestion && (
+          <a href='#' className='align-middle font-bold text-primary underline'>
+            {motivateQuestion}
+          </a>
+        )}
+      </div>
+
       {/*{Filters}*/}
       <Filters setProjects={setProjectsFromFilters} />
       <div className='grid grid-cols-1 justify-between gap-4 align-middle md:grid-cols-2 xl:gap-8'>
@@ -232,6 +269,14 @@ export const CardRenderer = ({
           </Button>
         </div>
       )}
-    </>
+    </div>
+  );
+ 
+  return inCatalog ? (
+    <section className='text-black-100 bg-background py-16 md:pb-8 md:pt-16'>
+      {children}
+    </section>
+  ) : (
+    <>{children}</>
   );
 };

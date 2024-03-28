@@ -57,7 +57,7 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
                 unoptimized
                 src={squareCardIcon}
                 alt={'Площадь'}
-                style={{ width: 'auto', height: 'auto' }}
+                style={{ height: 'auto' }}
               />
               <span>{square || 0}</span>
             </span>
@@ -68,7 +68,7 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
                 unoptimized
                 src={dispositionIcon}
                 alt={'Комнат'}
-                style={{ width: 'auto', height: 'auto' }}
+                // style={{ height: 'auto' }}
               />
               <span>{roomAmount || 0}</span>
             </span>
@@ -79,7 +79,7 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
                 unoptimized
                 src={bathroomIcon}
                 alt={'Ванных комнат'}
-                style={{ width: 'auto', height: 'auto' }}
+                style={{ height: 'auto' }}
               />
               <span>{bathroomAmount || 0}</span>
             </span>
@@ -90,7 +90,7 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
                 unoptimized
                 src={bedroomIcon}
                 alt={'Спальных комнат'}
-                style={{ width: 'auto', height: 'auto' }}
+                style={{ height: 'auto' }}
               />
               <span>{bedroomAmount || 0}</span>
             </span>

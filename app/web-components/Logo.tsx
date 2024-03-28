@@ -20,6 +20,7 @@ export default function Logo({
     >
       {src && (
         <Image
+          priority
           src={src}
           alt='logo'
           width={width}

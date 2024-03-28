@@ -36,7 +36,7 @@ async function fetchCatalogProjects() {
   }
 }
 
-export default async function CatalogRoute() {
+export default function CatalogRoute() {
   const [meta, setMeta] = useState<Meta | undefined>();
   const [data, setData] = useState<any>([]);
   const [isLoading, setLoading] = useState(true);
@@ -79,7 +79,7 @@ export default async function CatalogRoute() {
       } else {
         setData((prevData: any[]) => [...prevData, ...responseData.data]);
       }
-      console.log({ meta: responseData.meta });
+
       setMeta(responseData.meta);
     } catch (error) {
       console.error(error);
@@ -103,10 +103,15 @@ export default async function CatalogRoute() {
   // if (data.length === 0) return <div>Not Posts In this category</div>;
 
   // const { name, description } = data[0]?.attributes.category.data.attributes;
-  console.log(data);
+
   return (
     <div>
-      <CardRenderer inCatalog projects={data} />
+      <CardRenderer
+        inCatalog
+        projects={data}
+        title={'Каталог'}
+        motivateQuestion={'Узнайте больше о проектах'}
+      />
     </div>
   );
 }
