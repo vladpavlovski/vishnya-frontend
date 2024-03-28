@@ -10,6 +10,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import filterIcon from '@/public/icons/filter.svg';
@@ -91,9 +99,11 @@ interface FiltersProps {
 
 interface Props {
   setProjects: (data: ShortProject[]) => void;
+  isMobileOpen: boolean;
+  setIsMobileOpen: (value: boolean) => void;
 }
 
-const Filters = ({ setProjects }: Props) => {
+const Filters = ({ setProjects, isMobileOpen, setIsMobileOpen }: Props) => {
   const [filters, setFilters] = useState<FiltersProps[]>([]);
 
   const onFilterChange = async (value: string, filterProperty: string) => {
@@ -138,10 +148,11 @@ const Filters = ({ setProjects }: Props) => {
   const handleSubmit = async () => {
     const fetchedProjects = await getProjects(filters);
     setProjects(fetchedProjects.data);
+    setIsMobileOpen(false);
   };
 
-  return (
-    <div className='mb-6 mt-4 hidden flex-row gap-2 bg-projectCard p-6 md:flex'>
+  const filtersComponents = (
+    <>
       <Select
         onValueChange={(value: string) => {
           onFilterChange(value, 'purpose');
@@ -205,7 +216,29 @@ const Filters = ({ setProjects }: Props) => {
       <Button onClick={handleSubmit} className='bg-secondary hover:bg-primary'>
         Показать предложения
       </Button>
-    </div>
+    </>
+  );
+
+  return (
+    <>
+      <div className='mb-6 mt-4 hidden flex-row gap-2 bg-projectCard p-6 md:flex'>
+        {filtersComponents}
+      </div>
+      <Dialog open={isMobileOpen} onOpenChange={setIsMobileOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle className='text-left uppercase text-secondary'>
+              Фильтр
+            </DialogTitle>
+            {/* <DialogDescription>
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </DialogDescription> */}
+            {filtersComponents}
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 
@@ -221,63 +254,83 @@ export const CardRenderer = ({
   const [projectsFromFilters, setProjectsFromFilters] =
     useState<ShortProject[]>(projects);
 
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+
   const noProjectData = projectsFromFilters?.length === 0;
 
   useEffect(() => {
     setProjectsFromFilters(projects);
   }, [projects]);
 
+  const toggleMobileFilter = () => {
+    setIsMobileFilterOpen((state) => !state);
+  };
+
   const children = (
-    <div className=' mx-auto px-3 sm:container'>
-      <div className='mb-6 flex-1 flex-row flex-wrap justify-between align-middle md:mb-0'>
-        <div className='mb-3 flex items-end gap-2 md:mb-0'>
-          <Button asChild variant='link' className='rounded-none p-0'>
-            <Image
-              src={filterIcon}
-              alt={'Фильтр'}
-              unoptimized
-              width={36}
-              height={36}
-              className={'md:hidden'}
-              style={{
-                width: 'auto',
-                height: 'auto',
-              }}
-            />
-          </Button>
-          <h2 className='text-lg uppercase leading-none text-secondary md:mb-4 md:text-2xl lg:mb-8 lg:text-4xl'>
-            {title}
-          </h2>
+    <>
+      <div className=' mx-auto px-3 sm:container'>
+        <div className='mb-6 flex-1 flex-row flex-wrap justify-between align-middle md:mb-0'>
+          <div className='mb-3 flex items-end gap-2 md:mb-0'>
+            <Button
+              asChild
+              onClick={toggleMobileFilter}
+              variant='link'
+              className='rounded-none p-0'
+            >
+              <Image
+                src={filterIcon}
+                alt={'Фильтр'}
+                unoptimized
+                width={36}
+                height={36}
+                className={'md:hidden'}
+                style={{
+                  width: 'auto',
+                  height: 'auto',
+                }}
+              />
+            </Button>
+            <h2 className='text-lg uppercase leading-none text-secondary md:mb-4 md:text-2xl lg:mb-8 lg:text-4xl'>
+              {title}
+            </h2>
+          </div>
+          {motivateQuestion && (
+            <a
+              href='#'
+              className='align-middle font-bold text-primary underline'
+            >
+              {motivateQuestion}
+            </a>
+          )}
         </div>
-        {motivateQuestion && (
-          <a href='#' className='align-middle font-bold text-primary underline'>
-            {motivateQuestion}
-          </a>
+
+        {/*{Filters}*/}
+        <Filters
+          setProjects={setProjectsFromFilters}
+          isMobileOpen={isMobileFilterOpen}
+          setIsMobileOpen={setIsMobileFilterOpen}
+        />
+        <div className='grid grid-cols-1 justify-between gap-4 align-middle md:grid-cols-2 xl:gap-8'>
+          {projectsFromFilters?.map((project: ShortProject) => (
+            <CatalogCard key={project.id} data={project} />
+          ))}
+        </div>
+        {noProjectData && (
+          <div className='text-center text-xl text-gray-400'>Нет данных</div>
+        )}
+        {isLoading && <Loader />}
+        {inCatalog && !noMoreProjects && (
+          <div className='mt-6 flex flex-row justify-center'>
+            <Button
+              onClick={fetchMore}
+              className='bg-primary px-20 hover:bg-secondary'
+            >
+              {isLoading ? 'Грузим' : 'Показать еще объекты'}
+            </Button>
+          </div>
         )}
       </div>
-
-      {/*{Filters}*/}
-      <Filters setProjects={setProjectsFromFilters} />
-      <div className='grid grid-cols-1 justify-between gap-4 align-middle md:grid-cols-2 xl:gap-8'>
-        {projectsFromFilters?.map((project: ShortProject) => (
-          <CatalogCard key={project.id} data={project} />
-        ))}
-      </div>
-      {noProjectData && (
-        <div className='text-center text-xl text-gray-400'>Нет данных</div>
-      )}
-      {isLoading && <Loader />}
-      {inCatalog && !noMoreProjects && (
-        <div className='mt-6 flex flex-row justify-center'>
-          <Button
-            onClick={fetchMore}
-            className='bg-primary px-20 hover:bg-secondary'
-          >
-            {isLoading ? 'Грузим' : 'Показать еще объекты'}
-          </Button>
-        </div>
-      )}
-    </div>
+    </>
   );
 
   return inCatalog ? (
