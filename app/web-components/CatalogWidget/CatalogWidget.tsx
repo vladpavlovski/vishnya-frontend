@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import { ShortProject } from '@/app/utils/model';
 import { CardRenderer } from '@/app/web-components/CatalogWidget/CardRenderer';
+import { CatalogClientWrapper } from '@/app/catalog/ClientWrapper';
 
 interface CatalogWidgetProps {
   data: {
@@ -20,11 +21,15 @@ export default function CatalogWidget({ data }: CatalogWidgetProps) {
   const noProjectData = projects?.data ? projects.data.length === 0 : true;
   return (
     <section className='text-black-100 bg-background py-16 md:pb-8 md:pt-16'>
-      <CardRenderer
-        projects={projects?.data || []}
-        title={title}
-        motivateQuestion={motivateQuestion}
-      />
+      {noProjectData ? (
+        <CatalogClientWrapper />
+      ) : (
+        <CardRenderer
+          projects={projects.data}
+          title={title}
+          motivateQuestion={motivateQuestion}
+        />
+      )}
       {!noProjectData && (
         <div className='mt-6 flex flex-row justify-center'>
           <Button asChild className='bg-primary px-20 hover:bg-secondary'>
