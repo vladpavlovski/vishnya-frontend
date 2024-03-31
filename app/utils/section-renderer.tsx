@@ -5,6 +5,7 @@ import { Mission } from '@/app/web-components/Mission';
 import { Service } from '@/app/web-components/Service';
 import { AboutUs } from '@/app/web-components/AboutUs';
 import { CatalogWidgetContextProvider } from '@/app/web-components/CatalogWidget/CatalogContext';
+import { ContactFormSection } from '@/app/web-components/ContactFormSection/ContactFormSection';
 
 export function sectionRenderer(section: any, index: number) {
   switch (section.__component) {
@@ -24,6 +25,8 @@ export function sectionRenderer(section: any, index: number) {
       return <Service key={index} data={section} />;
     case 'sections.about-us':
       return <AboutUs key={index} data={section} />;
+    case 'sections.contact-form-section':
+      return <ContactFormSection key={index} data={section} />;
     default:
       return null;
   }
