@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0,0%,94.1%;
+    --background: 0, 0%, 94.1%;
     --foreground: 0 0% 3.9%;
 
     --card: 0 0% 100%;
@@ -34,8 +34,10 @@
 
     --radius: 0.5rem;
 
-    --project-card: 0,0%,91.8%;
-    --tag-background: 0,0%,82.7%;
+    --project-card: 0, 0%, 91.8%;
+    --tag-background: 0, 0%, 82.7%;
+
+    --faq-background: 0, 0%, 92%;
   }
 
   .dark {

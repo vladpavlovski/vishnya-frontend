@@ -4,8 +4,8 @@ import CatalogWidget from '@/app/web-components/CatalogWidget/CatalogWidget';
 import { Mission } from '@/app/web-components/Mission';
 import { Service } from '@/app/web-components/Service';
 import { AboutUs } from '@/app/web-components/AboutUs';
-import { CatalogWidgetContextProvider } from '@/app/web-components/CatalogWidget/CatalogContext';
 import { ContactFormSection } from '@/app/web-components/ContactFormSection/ContactFormSection';
+import { Faq } from '@/app/web-components/Faq';
 
 export function sectionRenderer(section: any, index: number) {
   switch (section.__component) {
@@ -14,11 +14,7 @@ export function sectionRenderer(section: any, index: number) {
     case 'sections.main-slide':
       return <MainSlide key={index} data={section} />;
     case 'sections.catalog-widget':
-      return (
-        <CatalogWidgetContextProvider>
-          <CatalogWidget key={index} data={section} />
-        </CatalogWidgetContextProvider>
-      );
+      return <CatalogWidget key={index} data={section} />;
     case 'sections.mission':
       return <Mission key={index} data={section} />;
     case 'sections.service':
@@ -27,6 +23,8 @@ export function sectionRenderer(section: any, index: number) {
       return <AboutUs key={index} data={section} />;
     case 'sections.contact-form-section':
       return <ContactFormSection key={index} data={section} />;
+    case 'sections.faq':
+      return <Faq key={index} data={section} />;
     default:
       return null;
   }
