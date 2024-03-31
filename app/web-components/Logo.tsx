@@ -16,7 +16,7 @@ export default function Logo({
     <Link
       href='/'
       aria-label='Back to homepage'
-      className='flex items-center justify-center p-2'
+      className='flex items-center justify-center'
     >
       {src && (
         <Image

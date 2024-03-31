@@ -87,8 +87,8 @@ export default function Footer({
   contacts: ContactProps;
 }) {
   return (
-    <footer className='bg-secondary py-10 text-white'>
-      <div className='container mx-auto space-y-6 divide-y divide-gray-400 divide-opacity-50 px-0 md:space-y-12'>
+    <footer className='bg-secondary pb-2 text-white'>
+      <div className='container mx-auto space-y-4 divide-y divide-gray-400 divide-opacity-50 px-0'>
         <div className='grid grid-cols-12'>
           {/*{First Column}*/}
           <div className='col-span-6 px-3 pt-8 text-center md:col-span-3 md:text-left'>
@@ -148,7 +148,7 @@ export default function Footer({
             <div className='flex flex-nowrap justify-center text-xl md:text-2xl'>
               {contacts.officePhoneNumber3}
             </div>
-            <div className='flex flex-wrap justify-center space-x-0 pt-0'>
+            <div className='mx-auto flex w-48 flex-wrap justify-center space-x-0'>
               {socialLinks.map((link: FooterLink) => (
                 <a
                   key={link.id}
@@ -164,10 +164,12 @@ export default function Footer({
             </div>
           </div>
         </div>
-        <div className='flex justify-center pt-6 lg:justify-center'>
+        <div className='flex justify-center pt-2 lg:justify-center'>
           <div className='flex flex-col justify-center'>
-            <Logo width={80} height={80} src={logoUrl} />
-            <div>©{new Date().getFullYear()} All rights reserved</div>
+            <Logo width={60} height={60} src={logoUrl} />
+            <p className='text-xs text-white'>
+              ©{new Date().getFullYear()} All rights reserved
+            </p>
           </div>
         </div>
       </div>
