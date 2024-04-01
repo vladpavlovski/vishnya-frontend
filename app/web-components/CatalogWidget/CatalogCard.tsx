@@ -31,13 +31,16 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
         {cardHeaderTitle}
       </div>
       <div className='flex flex-col md:flex-row'>
-        <Image
-          className='md:rounded-md-bl max-h-48 w-full md:h-full'
-          alt={'Title'}
-          src='https://picsum.photos/310/350'
-          width={310}
-          height={350}
-        />
+        <div className='relative w-full'>
+          <Image
+            className='md:rounded-md-bl w-full md:h-full'
+            alt={title}
+            src='https://picsum.photos/724/900'
+            fill
+            sizes='(min-width: 808px) 50vw, 100vw'
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
         <div className='rounded-md-br bg-projectCard p-4 md:w-7/12 xl:p-6'>
           {/*{Price}*/}
           <p className='text-xl xl:text-3xl'>
