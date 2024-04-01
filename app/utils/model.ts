@@ -100,8 +100,8 @@ export interface ShortProject {
     developer: string;
     tags: Tag[];
     disposition: Picture;
-    exteriorGallery: Picture[];
-    interiorGallery: Picture[];
+    exteriorGallery: { data: Data[] };
+    interiorGallery: { data: Data[] };
     address: string;
     price: string;
     cardHeaderTitle: string;

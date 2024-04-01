@@ -28,6 +28,11 @@ export const CatalogClientWrapper = () => {
           bedroomAmount: true,
           cardHeaderTitle: true,
           purpose: true,
+          exteriorGallery: {
+            fields: ['url'],
+            start: 0,
+            limit: 1,
+          },
           tags: {
             populate: {
               tag: {

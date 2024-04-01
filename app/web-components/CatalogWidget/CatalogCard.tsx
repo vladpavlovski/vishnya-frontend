@@ -8,6 +8,7 @@ import bedroomIcon from '@/public/icons/bedroomIcon.svg';
 import { limitString } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { getStrapiMedia } from '@/app/utils/api-helpers';
 
 export const CatalogCard = ({ data }: { data: ShortProject }) => {
   const {
@@ -22,9 +23,13 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
       tags,
       shortDescription,
       cardHeaderTitle,
+      exteriorGallery,
     },
   } = data;
 
+  const cardImageUrl = exteriorGallery
+    ? getStrapiMedia(exteriorGallery?.data?.[0]?.attributes?.url)
+    : null;
   return (
     <div className='w-full rounded'>
       <div className='rounded-t bg-secondary px-3 py-2 text-xs uppercase text-white'>
@@ -32,14 +37,16 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
       </div>
       <div className='flex flex-col md:flex-row'>
         <div className='relative w-full'>
-          <Image
-            className='md:rounded-md-bl w-full md:h-full'
-            alt={title}
-            src='https://picsum.photos/724/900'
-            fill
-            sizes='(min-width: 808px) 50vw, 100vw'
-            style={{ objectFit: 'cover' }}
-          />
+          {cardImageUrl && (
+            <Image
+              className='md:rounded-md-bl w-full md:h-full'
+              alt={title}
+              src={cardImageUrl}
+              fill
+              sizes='(min-width: 808px) 50vw, 100vw'
+              style={{ objectFit: 'cover' }}
+            />
+          )}
         </div>
         <div className='rounded-md-br bg-projectCard p-4 md:w-7/12 xl:p-6'>
           {/*{Price}*/}
