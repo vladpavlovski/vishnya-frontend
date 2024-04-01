@@ -36,15 +36,27 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
         {cardHeaderTitle}
       </div>
       <div className='flex flex-col md:flex-row'>
-        <div className='relative w-full'>
+        <div className='relative hidden w-full md:block'>
           {cardImageUrl && (
             <Image
-              className='md:rounded-md-bl w-full md:h-full'
+              className='relative w-full md:absolute md:h-full md:rounded-bl-md'
               alt={title}
               src={cardImageUrl}
               fill
-              sizes='(min-width: 808px) 50vw, 100vw'
+              sizes='(min-width: 808px) 100vw, 100vw'
               style={{ objectFit: 'cover' }}
+            />
+          )}
+        </div>
+        <div className='relative block w-full md:hidden'>
+          {cardImageUrl && (
+            <Image
+              className='relative max-h-48 w-full'
+              alt={title}
+              src={cardImageUrl}
+              height={200}
+              width={300}
+              style={{ objectFit: 'cover', width: '100%' }}
             />
           )}
         </div>
