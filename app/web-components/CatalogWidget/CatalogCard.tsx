@@ -24,6 +24,7 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
       shortDescription,
       cardHeaderTitle,
       exteriorGallery,
+      slug,
     },
   } = data;
 
@@ -136,7 +137,7 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
             asChild
             className='mt-4 w-full bg-secondary px-20 hover:bg-primary'
           >
-            <Link href='#'>Подробнее</Link>
+            <Link href={`/catalog/${slug}`}>Подробнее</Link>
           </Button>
         </div>
       </div>

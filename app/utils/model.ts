@@ -89,7 +89,6 @@ export interface ShortProject {
   id: string;
   attributes: {
     title: string;
-    description: string;
     shortDescription: string;
     square: string;
     roomAmount: number;
@@ -106,6 +105,32 @@ export interface ShortProject {
     price: string;
     cardHeaderTitle: string;
     area: string;
+    slug: string;
+  };
+}
+
+export interface Project {
+  id: string;
+  attributes: {
+    title: string;
+    description: string;
+    square: string;
+    roomAmount: number;
+    bedroomAmount: number;
+    bathroomAmount: number;
+    location: string;
+    propertyType: string;
+    developer: string;
+    disposition: Picture;
+    exteriorGallery: { data: Data[] };
+    interiorGallery: { data: Data[] };
+    address: string;
+    price: string;
+    currency: string;
+    cardHeaderTitle: string;
+    area: string;
+    slug: string;
+    handoverDate: string;
   };
 }
 
