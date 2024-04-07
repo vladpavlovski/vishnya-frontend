@@ -6,6 +6,17 @@ export async function getProjectBySlug(slug: string) {
   const path = `/projects`;
   const urlParamsObject = {
     filters: { slug },
+    populate: {
+      exteriorGallery: {
+        fields: ['url', 'alternativeText', 'caption'],
+      },
+      interiorGallery: {
+        fields: ['url', 'alternativeText', 'caption'],
+      },
+      disposition: {
+        fields: ['url', 'alternativeText', 'caption'],
+      },
+    },
   };
   const options = { headers: { Authorization: `Bearer ${token}` } };
   return await fetchAPI(path, urlParamsObject, options);
