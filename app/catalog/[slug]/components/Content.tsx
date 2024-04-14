@@ -5,6 +5,7 @@ import { ContentProps, Project } from '@/app/utils/model';
 import React from 'react';
 import { Header } from '@/app/catalog/[slug]/components/Header';
 import { Gallery } from '@/app/catalog/[slug]/components/Gallery';
+import { ProjectDescription } from '@/app/catalog/[slug]/components/ProjectDescription';
 
 export const Content = ({ data }: ContentProps) => {
   const {
@@ -40,7 +41,7 @@ export const Content = ({ data }: ContentProps) => {
         {/* {ExteriorGallery} */}
         <Gallery data={exteriorGallery?.data || []} title={'Экстерьер'} />
         {/* {ProjectDescription} */}
-
+        <ProjectDescription data={data} />
         {/* {InteriorGallery} */}
         <Gallery data={interiorGallery?.data || []} title={'Интерьер'} />
         {/* {Disposition and payment plan} */}
