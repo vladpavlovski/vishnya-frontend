@@ -131,6 +131,10 @@ export interface Project {
     area: string;
     slug: string;
     handoverDate: string;
+    paymentPlans: {
+      value: string;
+      description: string;
+    }[];
   };
 }
 

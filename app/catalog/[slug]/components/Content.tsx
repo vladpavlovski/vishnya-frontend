@@ -1,36 +1,17 @@
 'use client';
 import { ProjectBreadcrumbs } from '@/app/catalog/[slug]/components/Breadcrumbs';
 // TODO: remove use client
-import { ContentProps, Project } from '@/app/utils/model';
+import { ContentProps } from '@/app/utils/model';
 import React from 'react';
 import { Header } from '@/app/catalog/[slug]/components/Header';
 import { Gallery } from '@/app/catalog/[slug]/components/Gallery';
 import { ProjectDescription } from '@/app/catalog/[slug]/components/ProjectDescription';
+import { Disposition } from '@/app/catalog/[slug]/components/Disposition';
 
 export const Content = ({ data }: ContentProps) => {
   const {
     id,
-    attributes: {
-      title,
-      description,
-      square,
-      roomAmount,
-      bedroomAmount,
-      bathroomAmount,
-      location,
-      propertyType,
-      developer,
-      disposition,
-      exteriorGallery,
-      interiorGallery,
-      address,
-      price,
-      currency,
-      cardHeaderTitle,
-      area,
-      handoverDate,
-      slug,
-    },
+    attributes: { title, exteriorGallery, interiorGallery },
   } = data;
 
   return (
@@ -45,7 +26,7 @@ export const Content = ({ data }: ContentProps) => {
         {/* {InteriorGallery} */}
         <Gallery data={interiorGallery?.data || []} title={'Интерьер'} />
         {/* {Disposition and payment plan} */}
-
+        <Disposition data={data} />
         {/* {Location Map} */}
 
         {/* {Contact Form} */}

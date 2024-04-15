@@ -16,6 +16,13 @@ export async function getProjectBySlug(slug: string) {
       disposition: {
         fields: ['url', 'alternativeText', 'caption'],
       },
+      paymentPlans: {
+        populate: {
+          paymentOption: {
+            fields: ['value', 'description'],
+          },
+        },
+      },
     },
   };
   const options = { headers: { Authorization: `Bearer ${token}` } };
