@@ -1,12 +1,11 @@
-'use client';
 import { ProjectBreadcrumbs } from '@/app/catalog/[slug]/components/Breadcrumbs';
-// TODO: remove use client
 import { ContentProps } from '@/app/utils/model';
 import React from 'react';
 import { Header } from '@/app/catalog/[slug]/components/Header';
 import { Gallery } from '@/app/catalog/[slug]/components/Gallery';
 import { ProjectDescription } from '@/app/catalog/[slug]/components/ProjectDescription';
 import { Disposition } from '@/app/catalog/[slug]/components/Disposition';
+import { ContactFormSection } from '@/app/web-components/ContactFormSection/ContactFormSection';
 
 export const Content = ({ data }: ContentProps) => {
   const {
@@ -30,9 +29,14 @@ export const Content = ({ data }: ContentProps) => {
         {/* {Location Map} */}
 
         {/* {Contact Form} */}
-
-        {/* {Similar projects} */}
       </div>
+      <ContactFormSection
+        data={{
+          subtitle: 'Остались вопросы?',
+          title: 'Заполните форму и мы с вами свяжемся',
+        }}
+      />
+      <div className='mx-auto sm:container'>{/* {Similar projects} */}</div>
     </section>
   );
 };

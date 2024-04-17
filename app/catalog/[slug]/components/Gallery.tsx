@@ -19,6 +19,7 @@ export const Gallery = ({ data, title }: { data: Data[]; title: string }) => {
   const imagesViewerLinks = data.map(({ id, attributes }: any) => ({
     src: getStrapiMedia(attributes.url),
   }));
+
   return (
     <div className='mt-20'>
       <h3 className='mb-8 mt-4 text-3xl uppercase text-secondary'>{title}</h3>
