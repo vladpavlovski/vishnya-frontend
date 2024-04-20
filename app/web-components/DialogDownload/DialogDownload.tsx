@@ -22,7 +22,7 @@ export const DialogDownload = ({ isOpen, setIsOpen }: Props) => {
         className='border-none'
         style={{
           background: `url('${emailFormImg.src}'), rgba(132, 19, 38, 0.92)`,
-          width: '488px',
+          maxWidth: '488px',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           backgroundBlendMode: 'multiply',

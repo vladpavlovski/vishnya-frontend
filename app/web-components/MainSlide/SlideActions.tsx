@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { DialogDownload } from '@/app/web-components/DialogDownload/DialogDownload';
 import { useState } from 'react';
@@ -14,8 +13,11 @@ export const SlideActions = () => {
       >
         Скачать каталог проектов
       </Button>
-      <Button asChild className='w-full bg-primary hover:bg-secondary'>
-        <Link href='#'>Бесплатная консультация</Link>
+      <Button
+        onClick={() => setIsDownloadDialogOpen(true)}
+        className='w-full bg-primary hover:bg-secondary'
+      >
+        Бесплатная консультация
       </Button>
       <DialogDownload
         isOpen={isDownloadDialogOpen}

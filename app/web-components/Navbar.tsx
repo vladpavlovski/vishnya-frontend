@@ -11,6 +11,7 @@ import Image from 'next/image';
 import phoneCallIcon from '/public/phonecall.svg';
 import whatsAppIcon from '/public/whatsapp.svg';
 import telegramIcon from '/public/telegram.svg';
+import { DialogDownload } from '@/app/web-components/DialogDownload/DialogDownload';
 
 interface NavLink {
   id: number;
@@ -64,13 +65,15 @@ const IconAction = ({
   icon,
   text,
   link,
+  onClick,
 }: {
   icon: any;
   text: string;
   link?: string;
+  onClick?: () => void;
 }) => {
   return (
-    <div className='flex max-w-[70px]'>
+    <div className='flex max-w-[70px]' onClick={onClick}>
       <a
         href={link}
         target='_blank'
@@ -85,10 +88,14 @@ const IconAction = ({
 };
 
 const IconActions = ({ contacts }: { contacts: ContactProps }) => {
+  const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false);
   return (
     <div className='my-6 flex flex-row justify-between'>
-      {/*{TODO: modal for order call}*/}
-      <IconAction icon={phoneCallIcon} text={'Заказать консультацию'} />
+      <IconAction
+        onClick={() => setIsDownloadDialogOpen(true)}
+        icon={phoneCallIcon}
+        text={'Заказать консультацию'}
+      />
       <IconAction
         link={`https://wa.me/${contacts.whatsAppId}`}
         icon={whatsAppIcon}
@@ -98,6 +105,10 @@ const IconActions = ({ contacts }: { contacts: ContactProps }) => {
         link={`https://telegram.me/${contacts.telegramId}`}
         icon={telegramIcon}
         text={'Написать в Telegram'}
+      />
+      <DialogDownload
+        isOpen={isDownloadDialogOpen}
+        setIsOpen={setIsDownloadDialogOpen}
       />
     </div>
   );
@@ -110,6 +121,7 @@ function ContactInfo({
   contacts: ContactProps;
   showInMenu?: boolean;
 }) {
+  const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false);
   return (
     <div
       className={`${showInMenu ? 'flex gap-2 pt-6 text-left' : 'hidden text-right'} flex-col lg:flex`}
@@ -120,9 +132,16 @@ function ContactInfo({
       <div className='text-xs'>
         {`Звоните, мы работаем ${contacts.openDays} ${contacts.openHours}`}
       </div>
-      <a href='#' className='text-sm text-secondary underline'>
+      <button
+        onClick={() => setIsDownloadDialogOpen(true)}
+        className='text-left text-sm text-secondary underline md:text-right'
+      >
         Бесплатная консультация
-      </a>
+      </button>
+      <DialogDownload
+        isOpen={isDownloadDialogOpen}
+        setIsOpen={setIsDownloadDialogOpen}
+      />
     </div>
   );
 }
