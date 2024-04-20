@@ -67,7 +67,6 @@ export const FormClient = ({
   return (
     <Form {...form}>
       <motion.form
-        {...form}
         key='form'
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -80,6 +79,7 @@ export const FormClient = ({
         }
       >
         <FormField
+          key={'name'}
           control={form.control}
           name='name'
           render={({ field }) => (
@@ -96,6 +96,7 @@ export const FormClient = ({
           )}
         />
         <FormField
+          key={'phone'}
           control={form.control}
           name='phone'
           render={({ field }) => (
@@ -112,6 +113,7 @@ export const FormClient = ({
           )}
         />
         <FormField
+          key={'email'}
           control={form.control}
           name='email'
           render={({ field }) => (

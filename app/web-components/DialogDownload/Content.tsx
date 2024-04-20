@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FormClient } from '@/app/web-components/ContactFormSection/FormClient';
 const ThankYouMessage = () => (
@@ -9,7 +9,7 @@ const ThankYouMessage = () => (
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: 20 }}
   >
-    <p className='text-white'>Thank you for your inquiry</p>
+    <span className='text-white'>Thank you for your inquiry</span>
   </motion.div>
 );
 
@@ -32,7 +32,7 @@ export const Content = ({ isOpen }: { isOpen: boolean }) => {
       {submissionStatus ? (
         <ThankYouMessage key='thankyou' />
       ) : (
-        <>
+        <React.Fragment key='form'>
           <FormClient inModal handleSubmit={handleSubmit} />
           <p className='mt-4 text-center text-xs text-white'>
             <span>
@@ -43,7 +43,7 @@ export const Content = ({ isOpen }: { isOpen: boolean }) => {
               Политики конфиденциальности
             </Link>
           </p>
-        </>
+        </React.Fragment>
       )}
     </AnimatePresence>
   );

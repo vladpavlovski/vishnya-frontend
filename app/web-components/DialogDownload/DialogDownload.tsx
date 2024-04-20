@@ -1,7 +1,6 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
@@ -32,9 +31,7 @@ export const DialogDownload = ({ isOpen, setIsOpen }: Props) => {
           <DialogTitle className='mx-20 my-4 text-center text-xl uppercase text-white'>
             Скачать каталог проектов
           </DialogTitle>
-          <DialogDescription>
-            <Content isOpen={isOpen} />
-          </DialogDescription>
+          <Content isOpen={isOpen} />
         </DialogHeader>
       </DialogContent>
     </Dialog>
