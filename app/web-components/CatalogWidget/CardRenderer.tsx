@@ -22,6 +22,7 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import filterIcon from '@/public/icons/filter.svg';
 import Loader from '@/app/web-components/Loader';
+import { DialogDownload } from '@/app/web-components/DialogDownload/DialogDownload';
 
 interface CardRendererProps {
   projects: ShortProject[];
@@ -255,7 +256,7 @@ export const CardRenderer = ({
     useState<ShortProject[]>(projects);
 
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
-
+  const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false);
   const noProjectData = projectsFromFilters?.length === 0;
 
   useEffect(() => {
@@ -294,13 +295,14 @@ export const CardRenderer = ({
               {title}
             </h2>
           </div>
+
           {motivateQuestion && (
-            <a
-              href='#'
+            <div
+              onClick={() => setIsDownloadDialogOpen(true)}
               className='align-middle font-bold text-primary underline'
             >
               {motivateQuestion}
-            </a>
+            </div>
           )}
         </div>
 
@@ -330,6 +332,10 @@ export const CardRenderer = ({
           </div>
         )}
       </div>
+      <DialogDownload
+        isOpen={isDownloadDialogOpen}
+        setIsOpen={setIsDownloadDialogOpen}
+      />
     </>
   );
 
