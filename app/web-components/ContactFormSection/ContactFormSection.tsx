@@ -21,7 +21,6 @@ export const ContactFormSection = ({ data }: Props) => {
       style={{
         background: `url('${emailFormImg.src}'), rgba(132, 19, 38, 0.92)`,
         width: '100%',
-        // height: '200px',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundBlendMode: 'multiply',

@@ -1,5 +1,5 @@
 import Email from '@/app/web-components/Email';
-import MainSlide from '@/app/web-components/MainSlide';
+import MainSlide from '@/app/web-components/MainSlide/MainSlide';
 import CatalogWidget from '@/app/web-components/CatalogWidget/CatalogWidget';
 import { Mission } from '@/app/web-components/Mission';
 import { Service } from '@/app/web-components/Service';

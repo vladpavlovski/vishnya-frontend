@@ -6,7 +6,7 @@ import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import { ContactProps } from '@/app/utils/model';
-import { SlideActions } from '@/app/web-components/MainSlide';
+import { SlideActions } from '@/app/web-components/MainSlide/SlideActions';
 import Image from 'next/image';
 import phoneCallIcon from '/public/phonecall.svg';
 import whatsAppIcon from '/public/whatsapp.svg';

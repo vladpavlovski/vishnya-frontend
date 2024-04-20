@@ -1,28 +1,53 @@
 'use client';
-import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { motion } from 'framer-motion';
 
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 
 const formSchema = z.object({
-  name: z.string().min(2).max(50),
-  phone: z.string().min(9).max(15),
-  email: z.string().email().min(8).max(50),
+  name: z
+    .string({ required_error: 'Имя обязательно' })
+    .min(2, {
+      message: 'Имя должно содержать не менее 2 символов',
+    })
+    .max(50, {
+      message: 'Имя должно содержать не более 50 символов',
+    }),
+  phone: z
+    .string({
+      required_error: 'Номер телефона обязателен',
+      invalid_type_error: 'Недопустимый формат',
+    })
+    .min(9, { message: 'Номер телефона должен содержать не менее 9 цифр' })
+    .max(15, { message: 'Номер телефона должен содержать не более 15 цифр' }),
+  email: z
+    .string({ required_error: 'Электронная почта обязательна' })
+    .email({ message: 'Недопустимый формат электронной почты' })
+    .min(8, {
+      message: 'Электронная почта должна содержать не менее 8 символов',
+    })
+    .max(50, {
+      message: 'Электронная почта должна содержать не более 50 символов',
+    }),
 });
 
-export const FormClient = () => {
+export const FormClient = ({
+  inModal,
+  handleSubmit,
+}: {
+  inModal?: boolean;
+  handleSubmit?: () => void;
+}) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -36,13 +61,23 @@ export const FormClient = () => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+    handleSubmit?.();
   }
 
   return (
     <Form {...form}>
-      <form
+      <motion.form
+        {...form}
+        key='form'
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20 }}
         onSubmit={form.handleSubmit(onSubmit)}
-        className='flex flex-col justify-between gap-2 md:flex-row'
+        className={
+          inModal
+            ? 'flex flex-col justify-between gap-4'
+            : 'flex flex-col justify-between gap-2 md:flex-row'
+        }
       >
         <FormField
           control={form.control}
@@ -52,7 +87,7 @@ export const FormClient = () => {
               <FormControl>
                 <Input
                   placeholder='Ваше имя'
-                  className='w-full focus-visible:ring-1 focus-visible:ring-primary'
+                  className='w-full py-6 focus-visible:ring-1 focus-visible:ring-primary'
                   {...field}
                 />
               </FormControl>
@@ -69,7 +104,7 @@ export const FormClient = () => {
                 <Input
                   placeholder='Телефон*'
                   {...field}
-                  className='w-full focus-visible:ring-1 focus-visible:ring-primary'
+                  className='w-full py-6 focus-visible:ring-1 focus-visible:ring-primary'
                 />
               </FormControl>
               <FormMessage />
@@ -85,17 +120,20 @@ export const FormClient = () => {
                 <Input
                   placeholder='E-mail'
                   {...field}
-                  className='w-full focus-visible:ring-1 focus-visible:ring-primary'
+                  className='w-full py-6 focus-visible:ring-1 focus-visible:ring-primary'
                 />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button className='w-full' type='submit'>
+        <Button
+          className='w-full py-6 text-lg hover:bg-secondary'
+          type='submit'
+        >
           Отправить
         </Button>
-      </form>
+      </motion.form>
     </Form>
   );
 };

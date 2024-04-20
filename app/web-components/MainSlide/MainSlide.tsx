@@ -1,7 +1,6 @@
-import HighlightedText from './HighlightedText';
-import { getStrapiMedia } from '../utils/api-helpers';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import HighlightedText from '../HighlightedText';
+import { getStrapiMedia } from '../../utils/api-helpers';
+import { SlideActions } from '@/app/web-components/MainSlide/SlideActions';
 
 interface Button {
   id: string;
@@ -36,19 +35,6 @@ interface MainSlideProps {
     bullet2Value: string;
   };
 }
-
-export const SlideActions = () => {
-  return (
-    <div className='flex flex-col items-center gap-4 md:flex-row md:gap-8'>
-      <Button asChild className='w-full bg-secondary hover:bg-primary'>
-        <Link href='#'>Скачать каталог проектов</Link>
-      </Button>
-      <Button asChild className='w-full bg-primary hover:bg-secondary'>
-        <Link href='#'>Бесплатная консультация</Link>
-      </Button>
-    </div>
-  );
-};
 
 export default function MainSlide({ data }: MainSlideProps) {
   const imgUrl = getStrapiMedia(data.backgroundImage.data.attributes.url);
