@@ -13,7 +13,6 @@ interface Props {
 }
 
 export const DialogDownload = ({ isOpen, setIsOpen }: Props) => {
-  // TODO: разделить еще на компоненты AnimatePresence должны быть внутри собственной client-компоненты
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent

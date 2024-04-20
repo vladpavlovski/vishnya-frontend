@@ -46,7 +46,7 @@ function MobileNavLink({ url, text, closeMenu }: MobileNavLink) {
     closeMenu();
   };
   return (
-    <a className='flex'>
+    <div className='flex'>
       <Link
         href={url}
         onClick={handleClick}
@@ -56,7 +56,7 @@ function MobileNavLink({ url, text, closeMenu }: MobileNavLink) {
       >
         {text}
       </Link>
-    </a>
+    </div>
   );
 }
 
@@ -166,12 +166,18 @@ export default function Navbar({
           <div className='fixed inset-0 z-40 bg-white' /> {/* Overlay */}
           <Dialog.Panel className='fixed inset-y-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 ltr:right-0 rtl:left-0 sm:max-w-sm sm:ring-1 sm:ring-inset sm:ring-white/10'>
             <div className='flex items-center justify-between'>
-              <a href='#' className='-m-1.5 p-1.5'>
-                <span className='sr-only'>Strapi</span>
+              <Link href='/' className='-m-1.5 p-1.5'>
+                <span className='sr-only'>Vishnya</span>
                 {logoUrl && (
-                  <img className='h-12 w-auto' src={logoUrl} alt='' />
+                  <Image
+                    height={48}
+                    width={192}
+                    className='h-12 w-auto'
+                    src={logoUrl}
+                    alt=''
+                  />
                 )}
-              </a>
+              </Link>
               <button
                 type='button'
                 className='-m-2.5 rounded-md p-2.5 text-black'

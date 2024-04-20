@@ -47,6 +47,7 @@ export default function ArticleSelect({
             if (category.attributes.articles.data.length === 0) return null;
             return (
               <Link
+                key={category.id}
                 href={`/blog/${category.attributes.slug}`}
                 className={selectedFilter(
                   category.attributes.slug,
@@ -67,7 +68,7 @@ export default function ArticleSelect({
           <ul className='ml-4 list-disc space-y-1'>
             {articles.map((article: Article) => {
               return (
-                <li>
+                <li key={article.id}>
                   <Link
                     rel='noopener noreferrer'
                     href={`/blog/${params.category}/${article.attributes.slug}`}
