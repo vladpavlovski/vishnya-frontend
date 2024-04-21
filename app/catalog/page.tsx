@@ -14,6 +14,6 @@ export default async function CatalogRoute() {
       sectionRenderer(section, index)
     );
   } catch (error: any) {
-    console.error('Missing or invalid credentials');
+    console.error('Missing or invalid credentials:', error);
   }
 }
