@@ -11,6 +11,11 @@ module.exports = {
         hostname: 'vishnya-strapi-stage.cap.catster.org',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: '*.vishnyaproperties.com',
+        port: '',
+      },
     ],
   },
 };
