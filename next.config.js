@@ -13,7 +13,7 @@ module.exports = {
       },
       {
         protocol: 'https',
-        hostname: '*.vishnyaproperties.com',
+        hostname: 'ru-vishnya-strapi.office.vishnyaproperties.com',
         port: '',
       },
     ],
