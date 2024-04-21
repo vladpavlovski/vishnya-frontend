@@ -8,7 +8,7 @@ module.exports = {
       },
       {
         protocol: 'https',
-        hostname: 'picsum.photos',
+        hostname: 'vishnya-strapi-stage.cap.catster.org',
         port: '',
       },
     ],
