@@ -21,7 +21,7 @@ export const Gallery = ({ data, title }: { data: Data[]; title: string }) => {
   }));
 
   return (
-    <div className='mt-20'>
+    <div className='my-20'>
       <h3 className='mb-8 mt-4 text-3xl uppercase text-secondary'>{title}</h3>
       <Carousel className='mx-0'>
         <CarouselContent>

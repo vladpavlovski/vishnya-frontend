@@ -7,6 +7,11 @@ export const Disposition = ({ data }: ContentProps) => {
     attributes: { disposition, paymentPlans },
   } = data;
 
+  if (!disposition?.data?.attributes) {
+    // do not render if there is no disposition
+    return null;
+  }
+
   const {
     data: {
       attributes: { url, alternativeText },
