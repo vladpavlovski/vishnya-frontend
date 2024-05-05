@@ -130,7 +130,7 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
             ))}
           </div>
 
-          <p className='mt-2 text-justify text-sm md:leading-tight'>
+          <p className='mt-2 text-sm md:leading-tight'>
             {limitString(shortDescription, 200)}
           </p>
           <Button
