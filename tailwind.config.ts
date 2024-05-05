@@ -56,6 +56,7 @@ const config = {
         projectCard: 'hsl(var(--project-card))',
         tagBackground: 'hsl(var(--tag-background))',
         faqBackground: 'hsl(var(--faq-background))',
+        fontBase: 'hsl(var(--font-base))',
       },
       borderRadius: {
         lg: 'var(--radius)',
