@@ -6,6 +6,31 @@ import { FALLBACK_SEO } from '@/app/utils/constants';
 import Navbar from '@/app/web-components/Navbar';
 import Banner from '@/app/web-components/Banner';
 import Footer from '@/app/web-components/Footer';
+import localFont from 'next/font/local';
+
+const beVietnam = localFont({
+  src: [
+    {
+      path: '../public/fonts/BeVietnam-Regular.ttf',
+      weight: '400',
+    },
+    {
+      path: '../public/fonts/BeVietnam-Bold.ttf',
+      weight: '700',
+    },
+  ],
+  variable: '--font-be-vietnam',
+});
+
+const newAthena = localFont({
+  src: [
+    {
+      path: '../public/fonts/New-Athena-Unicode.ttf',
+      weight: '400',
+    },
+  ],
+  variable: '--font-new-athena',
+});
 
 async function getGlobal(): Promise<any> {
   const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
@@ -55,7 +80,6 @@ export default async function RootLayout({
   readonly children: React.ReactNode;
 }) {
   const global = await getGlobal();
-  // TODO: CREATE A CUSTOM ERROR PAGE
   if (!global.data) return null;
 
   const { notificationBanner, navbar, footer, contacts } =
@@ -71,7 +95,9 @@ export default async function RootLayout({
 
   return (
     <html lang='ru'>
-      <body>
+      <body
+        className={`${newAthena.variable} ${beVietnam.variable} antialiased`}
+      >
         <Navbar
           links={navbar.links}
           logoUrl={navbarLogoUrl}

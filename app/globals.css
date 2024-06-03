@@ -73,6 +73,13 @@
   }
 }
 
+@font-face {
+  font-family: 'New-Athena';
+  src: url('../public/fonts/New-Athena-Unicode.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @layer base {
   * {
     @apply border-border;
