@@ -35,7 +35,7 @@ export const Vision = ({ data }: Props) => {
             } = concept.backgroundImage;
             const imageUrl = getStrapiMedia(url);
             return (
-              <div key={concept.id} className='relative'>
+              <div key={concept.id} className='relative gap-2'>
                 {imageUrl && (
                   <Image
                     alt={concept.title}
@@ -49,11 +49,11 @@ export const Vision = ({ data }: Props) => {
                     width='466'
                   />
                 )}
-                <div className='justify-top absolute inset-0 flex flex-col bg-[#00000080] p-8 md:pt-16 lg:pt-24'>
-                  <h2 className='text-center text-2xl text-white'>
+                <div className='justify-top absolute inset-0 flex flex-col bg-[#00000050] p-8 md:pt-16 lg:pt-24'>
+                  <h2 className='px-2 text-center text-3xl uppercase text-white drop-shadow-md'>
                     {concept.title}
                   </h2>
-                  <p className='mt-4 text-sm leading-relaxed text-white'>
+                  <p className='mt-4 text-justify text-sm leading-loose text-white drop-shadow-md'>
                     {concept.description}
                   </p>
                 </div>
