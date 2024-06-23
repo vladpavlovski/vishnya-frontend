@@ -51,10 +51,10 @@ export default function MainSlide({ data }: MainSlideProps) {
     <section id='main-slide' className='text-black-100 bg-background'>
       <div
         style={backgroundStyling}
-        className={`flex justify-center px-6 py-8 md:px-24 md:py-32 `}
+        className={`flex justify-center px-6 py-8 md:px-24 md:py-32`}
       >
         <div className='mx-auto py-4 sm:container'>
-          <div className='flex max-w-5xl flex-col justify-center rounded-sm bg-gradient-to-r from-white/[.85] via-white/[.8] to-white/[.4] px-4 py-10 text-center md:rounded-md lg:p-10  lg:text-left'>
+          <div className='flex max-w-5xl flex-col justify-center rounded-sm bg-gradient-to-r from-white/[.85] via-white/[.8] to-white/[.4] px-4 py-10 text-center backdrop-blur-sm md:rounded-md lg:p-10  lg:text-left'>
             <HighlightedText
               text={data.title}
               tag='h1'
@@ -71,8 +71,8 @@ export default function MainSlide({ data }: MainSlideProps) {
 
             <div className='mb-6 flex flex-col md:flex-row'>
               {/*{ Bullet 1}*/}
-              <div className='flex flex-col items-center  md:mr-2 md:flex-row md:border-r-2 md:border-gray-400'>
-                <div className='jus flex'>
+              <div className='flex flex-col items-center md:mr-2 md:flex-row md:border-r-2 md:border-gray-400'>
+                <div className='flex'>
                   <p className='font mr-2 text-4xl text-primary md:text-6xl'>
                     {data.bullet1Value}
                   </p>
@@ -86,8 +86,8 @@ export default function MainSlide({ data }: MainSlideProps) {
               </div>
 
               {/*{ Bullet 2}*/}
-              <div className='flex flex-col items-center md:mr-2 md:flex-row md:border-r-2 md:border-gray-400'>
-                <div className='flex '>
+              <div className='ml-2 flex flex-col items-center md:mr-2 md:flex-row'>
+                <div className='flex'>
                   <p className='font mr-2 text-4xl text-primary md:text-6xl'>
                     {data.bullet2Value}
                   </p>

@@ -12,13 +12,13 @@ export const SlideActions = () => {
     >
       <Button
         onClick={() => setIsDownloadDialogOpen(true)}
-        className='w-full bg-secondary py-7 font-NewAthena text-xl hover:bg-primary'
+        className='bg-secondary px-6 py-7 font-NewAthena text-2xl hover:bg-primary'
       >
         Скачать каталог проектов
       </Button>
       <Button
         onClick={() => setIsDownloadDialogOpen(true)}
-        className='w-full bg-primary py-7 font-NewAthena text-xl hover:bg-secondary'
+        className='bg-primary px-6 py-7 font-NewAthena text-2xl hover:bg-secondary'
       >
         Бесплатная консультация
       </Button>
