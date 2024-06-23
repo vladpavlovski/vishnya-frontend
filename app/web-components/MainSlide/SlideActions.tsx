@@ -8,7 +8,7 @@ export const SlideActions = () => {
   return (
     <div
       id='slide-actions'
-      className='flex max-w-2xl flex-col items-center gap-4 md:flex-row md:gap-8'
+      className='flex max-w-[750px] flex-col items-center gap-4 md:flex-row md:gap-8'
     >
       <Button
         onClick={() => setIsDownloadDialogOpen(true)}
