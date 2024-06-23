@@ -48,17 +48,17 @@ export default function MainSlide({ data }: MainSlideProps) {
   };
 
   return (
-    <section className='text-black-100 bg-background'>
+    <section id='main-slide' className='text-black-100 bg-background'>
       <div
         style={backgroundStyling}
         className={`flex justify-center px-6 py-8 md:px-24 md:py-32 `}
       >
         <div className='mx-auto py-4 sm:container'>
-          <div className='flex max-w-4xl flex-col justify-center rounded-sm bg-gradient-to-r from-white/[.85] via-white/[.8] to-white/[.4] px-4 py-10 text-center md:rounded-md lg:p-10  lg:text-left'>
+          <div className='flex max-w-5xl flex-col justify-center rounded-sm bg-gradient-to-r from-white/[.85] via-white/[.8] to-white/[.4] px-4 py-10 text-center md:rounded-md lg:p-10  lg:text-left'>
             <HighlightedText
               text={data.title}
               tag='h1'
-              className='font-NewAthena mb-4 text-3xl uppercase leading-none text-secondary md:text-3xl lg:mb-8 lg:text-5xl'
+              className='mb-4 font-NewAthena text-3xl uppercase leading-none text-secondary md:text-3xl lg:mb-8 lg:text-5xl'
               color='dark:text-violet-400'
             />
 
