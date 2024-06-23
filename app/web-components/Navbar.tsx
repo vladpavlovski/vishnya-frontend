@@ -160,7 +160,10 @@ export default function Navbar({
     setMobileMenuOpen(false);
   };
   return (
-    <div className='bg-background p-4'>
+    <div
+      id='navbar'
+      className='fixed z-50 w-full bg-gradient-to-r from-white/[.6] to-white/[.6] p-4 backdrop-blur'
+    >
       <div className='container mx-auto flex h-16 justify-between px-0 sm:px-6'>
         <Logo src={logoUrl} width={192} />
 

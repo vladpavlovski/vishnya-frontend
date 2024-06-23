@@ -104,7 +104,11 @@ export default async function RootLayout({
           contacts={contacts}
         />
 
-        <main className='min-h-screen'>{children}</main>
+        <main className='min-h-screen'>
+          {/* empty background for navbar */}
+          <div className='h-24 bg-background p-4' />
+          {children}
+        </main>
 
         <Banner data={notificationBanner} />
 
