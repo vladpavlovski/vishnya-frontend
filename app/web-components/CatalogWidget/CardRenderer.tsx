@@ -13,10 +13,8 @@ import {
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
@@ -269,14 +267,14 @@ export const CardRenderer = ({
 
   const children = (
     <>
-      <div className=' mx-auto px-3 sm:container'>
-        <div className='mb-6 flex-1 flex-row flex-wrap justify-between align-middle md:mb-0'>
-          <div className='mb-3 flex items-end gap-2 md:mb-0'>
+      <div className='mx-auto sm:container'>
+        <div className='mb-6 flex flex-row flex-wrap justify-between align-middle md:mb-0'>
+          <span className='flex items-end gap-2 align-middle'>
             <Button
               asChild
               onClick={toggleMobileFilter}
               variant='link'
-              className='rounded-none p-0'
+              className='rounded-none p-0 md:hidden'
             >
               <Image
                 src={filterIcon}
@@ -284,26 +282,23 @@ export const CardRenderer = ({
                 unoptimized
                 width={36}
                 height={36}
-                className={'md:hidden'}
                 style={{
                   width: 'auto',
                   height: 'auto',
                 }}
               />
             </Button>
-            <h2 className='text-lg uppercase leading-none text-secondary md:mb-4 md:text-2xl lg:mb-8 lg:text-4xl'>
+            <h2 className='font-NewAthena text-lg uppercase leading-none text-secondary md:mb-4 md:text-2xl lg:mb-8 lg:text-4xl'>
               {title}
             </h2>
-          </div>
+          </span>
 
-          {motivateQuestion && (
-            <div
-              onClick={() => setIsDownloadDialogOpen(true)}
-              className='align-middle font-bold text-primary underline'
-            >
-              {motivateQuestion}
-            </div>
-          )}
+          <span
+            onClick={() => setIsDownloadDialogOpen(true)}
+            className='align-middle font-bold text-primary underline'
+          >
+            {motivateQuestion}
+          </span>
         </div>
 
         {/*{Filters}*/}
@@ -325,7 +320,7 @@ export const CardRenderer = ({
           <div className='mt-6 flex flex-row justify-center'>
             <Button
               onClick={fetchMore}
-              className='bg-primary px-20 hover:bg-secondary'
+              className='bg-primary px-20 py-6 font-NewAthena text-xl hover:bg-secondary'
             >
               {isLoading ? 'Грузим' : 'Показать еще объекты'}
             </Button>

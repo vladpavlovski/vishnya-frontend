@@ -8,9 +8,9 @@ import { useState } from 'react';
 import { ContactProps } from '@/app/utils/model';
 import { SlideActions } from '@/app/web-components/MainSlide/SlideActions';
 import Image from 'next/image';
-import phoneCallIcon from '/public/phonecall.svg';
-import whatsAppIcon from '/public/whatsapp.svg';
-import telegramIcon from '/public/telegram.svg';
+import phoneCallIcon from '@/public/phonecall.svg';
+import whatsAppIcon from '@/public/whatsapp.svg';
+import telegramIcon from '@/public/telegram.svg';
 import { DialogDownload } from '@/app/web-components/DialogDownload/DialogDownload';
 
 interface NavLink {

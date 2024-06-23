@@ -32,7 +32,10 @@ export default function CatalogWidget({ data }: CatalogWidgetProps) {
       )}
       {!noProjectData && (
         <div className='mt-6 flex flex-row justify-center'>
-          <Button asChild className='bg-primary px-20 hover:bg-secondary'>
+          <Button
+            asChild
+            className='font-NewAthena bg-primary px-20 text-xl hover:bg-secondary'
+          >
             <Link href='/catalog'>В каталог →</Link>
           </Button>
         </div>

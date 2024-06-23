@@ -130,7 +130,7 @@ export const FormClient = ({
           )}
         />
         <Button
-          className='w-full py-6 text-lg hover:bg-secondary'
+          className='font-NewAthena w-full py-6 text-xl font-bold hover:bg-secondary'
           type='submit'
         >
           Отправить

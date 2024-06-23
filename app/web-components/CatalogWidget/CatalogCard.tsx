@@ -33,7 +33,7 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
     : null;
   return (
     <div className='w-full rounded'>
-      <div className='rounded-t bg-secondary px-3 py-2 text-xs uppercase text-white'>
+      <div className='font-NewAthena rounded-t bg-secondary px-3 py-2 text-sm font-bold uppercase text-white'>
         {cardHeaderTitle}
       </div>
       <div className='flex flex-col md:flex-row'>
@@ -63,12 +63,14 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
         </div>
         <div className='rounded-md-br bg-projectCard p-4 md:w-7/12 xl:p-6'>
           {/*{Price}*/}
-          <p className='text-xl xl:text-3xl'>
-            <span className='mr-1 text-primary'>$</span>
+          <p className='font-NewAthena text-xl xl:text-3xl'>
+            <span className='font-NewAthena mr-1 font-bold text-primary'>
+              $
+            </span>
             {price}
           </p>
           {/*{Title}*/}
-          <h3 className='text-md font-bold text-secondary xl:text-xl'>
+          <h3 className='font-NewAthena text-md font-bold text-secondary xl:text-xl'>
             {title}
           </h3>
           {/*{Icons}*/}
@@ -80,7 +82,6 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
                 unoptimized
                 src={squareCardIcon}
                 alt={'Площадь'}
-                style={{ height: 'auto' }}
               />
               <span>{square || 0}</span>
             </span>
@@ -91,7 +92,6 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
                 unoptimized
                 src={dispositionIcon}
                 alt={'Комнат'}
-                // style={{ height: 'auto' }}
               />
               <span>{roomAmount || 0}</span>
             </span>
@@ -135,7 +135,7 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
           </p>
           <Button
             asChild
-            className='mt-4 w-full bg-secondary px-20 hover:bg-primary'
+            className='font-NewAthena mt-4 w-full bg-secondary px-20 hover:bg-primary'
           >
             <Link href={`/catalog/${slug}`}>Подробнее</Link>
           </Button>

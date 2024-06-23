@@ -28,8 +28,12 @@ export const ContactFormSection = ({ data }: Props) => {
       className='text-black-100 bg-background p-8 md:py-16 '
     >
       <div className='mx-auto px-3 sm:container'>
-        <h3 className='text-xs uppercase text-primary'>{data.subtitle}</h3>
-        <h2 className='mb-8 text-3xl uppercase text-primary'>{data.title}</h2>
+        <h3 className='font-NewAthena text-xs uppercase text-primary'>
+          {data.subtitle}
+        </h3>
+        <h2 className='font-NewAthena mb-8 text-3xl uppercase text-primary'>
+          {data.title}
+        </h2>
         <FormClient />
         <p className='mt-4 text-xs text-white'>
           Нажимая на кнопку “Отправить” вы соглашаетесь с условиями{' '}

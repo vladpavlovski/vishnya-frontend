@@ -58,7 +58,7 @@ export default function MainSlide({ data }: MainSlideProps) {
             <HighlightedText
               text={data.title}
               tag='h1'
-              className='mb-4 text-2xl uppercase leading-none text-secondary md:text-3xl lg:mb-8 lg:text-5xl'
+              className='font-NewAthena mb-4 text-3xl uppercase leading-none text-secondary md:text-3xl lg:mb-8 lg:text-5xl'
               color='dark:text-violet-400'
             />
 

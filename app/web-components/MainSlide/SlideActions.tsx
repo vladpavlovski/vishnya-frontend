@@ -9,13 +9,13 @@ export const SlideActions = () => {
     <div className='flex flex-col items-center gap-4 md:flex-row md:gap-8'>
       <Button
         onClick={() => setIsDownloadDialogOpen(true)}
-        className='w-full bg-secondary hover:bg-primary'
+        className='font-NewAthena w-full bg-secondary py-6 text-xl hover:bg-primary'
       >
         Скачать каталог проектов
       </Button>
       <Button
         onClick={() => setIsDownloadDialogOpen(true)}
-        className='w-full bg-primary hover:bg-secondary'
+        className='font-NewAthena w-full bg-primary py-6 text-xl hover:bg-secondary'
       >
         Бесплатная консультация
       </Button>
