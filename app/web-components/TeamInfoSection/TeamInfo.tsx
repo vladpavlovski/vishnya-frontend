@@ -25,11 +25,11 @@ export const TeamInfo = ({ data }: Props) => {
     <section className='bg-background pb-32'>
       <div className='mx-auto px-3 sm:container'>
         <p
-          className='text-center uppercase'
+          className='hidden text-center font-NewAthena uppercase sm:block sm:text-8xl lg:text-9xl'
           style={{
             color: '#DFC6C6BF',
             letterSpacing: '0.55em',
-            fontSize: '7em',
+            // fontSize: '9em',
           }}
         >
           Вишня
