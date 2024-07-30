@@ -8,6 +8,7 @@ import { ContactFormSection } from '@/app/web-components/ContactFormSection/Cont
 import { Faq } from '@/app/web-components/Faq';
 import { Vision } from '@/app/web-components/VisionSection/Vision';
 import { TeamInfo } from '@/app/web-components/TeamInfoSection/TeamInfo';
+import { FeatureSection } from '@/app/web-components/FeatureSection/FeatureSection';
 
 export function sectionRenderer(section: any, index: number) {
   switch (section.__component) {
@@ -31,6 +32,8 @@ export function sectionRenderer(section: any, index: number) {
       return <Vision key={index} data={section} />;
     case 'sections.team-info':
       return <TeamInfo key={index} data={section} />;
+    case 'sections.feature-section':
+      return <FeatureSection key={index} data={section} />;
     default:
       return null;
   }
