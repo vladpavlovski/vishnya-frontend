@@ -3,7 +3,7 @@ import { Fade } from 'react-slideshow-image';
 import { getStrapiMedia } from '../utils/api-helpers';
 import Image from 'next/image';
 
-interface Image {
+interface ImageProps {
   id: number;
   attributes: {
     alternativeText: string | null;
@@ -14,7 +14,7 @@ interface Image {
 
 interface SlidShowProps {
   files: {
-    data: Image[];
+    data: ImageProps[];
   };
 }
 
@@ -22,7 +22,7 @@ export default function Slideshow({ data }: { data: SlidShowProps }) {
   return (
     <div className='slide-container'>
       <Fade>
-        {data.files.data.map((fadeImage: Image, index) => {
+        {data.files.data.map((fadeImage: ImageProps, index) => {
           const imageUrl = getStrapiMedia(fadeImage.attributes.url);
           return (
             <div key={index}>

@@ -13,25 +13,25 @@ import whatsAppIcon from '@/public/whatsapp.svg';
 import telegramIcon from '@/public/telegram.svg';
 import { DialogDownload } from '@/app/web-components/DialogDownload/DialogDownload';
 
-interface NavLink {
+interface NavLinkProps {
   id: number;
   url: string;
   newTab: boolean;
   text: string;
 }
 
-interface MobileNavLink extends NavLink {
+interface MobileNavLinkProps extends NavLinkProps {
   closeMenu: () => void;
 }
 
-function NavLink({ url, text }: NavLink) {
+function NavLink({ url, text }: NavLinkProps) {
   const path = usePathname();
 
   return (
     <li className='flex'>
       <Link
         href={url}
-        className={`-mb-1 flex items-center border-b-2 sm:mx-3   ${
+        className={`-mb-1 flex items-center border-b-2 sm:mx-3 ${
           path === url && 'border-primary text-primary'
         }}`}
       >
@@ -41,7 +41,7 @@ function NavLink({ url, text }: NavLink) {
   );
 }
 
-function MobileNavLink({ url, text, closeMenu }: MobileNavLink) {
+function MobileNavLink({ url, text, closeMenu }: MobileNavLinkProps) {
   const path = usePathname();
   const handleClick = () => {
     closeMenu();
@@ -151,7 +151,7 @@ export default function Navbar({
   logoUrl,
   contacts,
 }: {
-  links: Array<NavLink>;
+  links: Array<NavLinkProps>;
   logoUrl: string | null;
   contacts: ContactProps;
 }) {
@@ -170,7 +170,7 @@ export default function Navbar({
         {/* Desktop Nav */}
         <div className='hidden flex-shrink-0 items-center lg:flex'>
           <ul className='hidden items-stretch space-x-1 lg:flex'>
-            {links.map((item: NavLink) => (
+            {links.map((item: NavLinkProps) => (
               <NavLink key={item.id} {...item} />
             ))}
           </ul>
@@ -186,7 +186,7 @@ export default function Navbar({
           onClose={setMobileMenuOpen}
         >
           <div className='fixed inset-0 z-40 bg-white' /> {/* Overlay */}
-          <Dialog.Panel className='fixed inset-y-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 ltr:right-0 rtl:left-0 sm:max-w-sm sm:ring-1 sm:ring-inset sm:ring-white/10'>
+          <Dialog.Panel className='fixed inset-y-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-inset sm:ring-white/10 ltr:right-0 rtl:left-0'>
             <div className='flex items-center justify-between'>
               <Link href='/' className='-m-1.5 p-1.5'>
                 <span className='sr-only'>Vishnya</span>

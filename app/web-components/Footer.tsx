@@ -15,7 +15,7 @@ import {
 import { AiFillTwitterCircle, AiFillYoutube } from 'react-icons/ai';
 import { ContactProps } from '@/app/utils/model';
 
-interface FooterLink {
+interface FooterLinkProps {
   id: number;
   url: string;
   newTab: boolean;
@@ -23,7 +23,7 @@ interface FooterLink {
   social?: string;
 }
 
-function FooterLink({ url, text }: FooterLink) {
+function FooterLink({ url, text }: FooterLinkProps) {
   const path = usePathname();
   return (
     <li className='flex'>
@@ -81,9 +81,9 @@ export default function Footer({
 }: {
   logoUrl: string | null;
   logoText: string | null;
-  menuLinks: Array<FooterLink>;
-  menuLinks2: Array<FooterLink>;
-  socialLinks: Array<FooterLink>;
+  menuLinks: Array<FooterLinkProps>;
+  menuLinks2: Array<FooterLinkProps>;
+  socialLinks: Array<FooterLinkProps>;
   contacts: ContactProps;
 }) {
   return (
@@ -128,7 +128,7 @@ export default function Footer({
           {/*{Second Column}*/}
           <div className='col-span-6 hidden px-3 pt-8 text-center md:col-span-3 md:flex md:text-left'>
             <ul>
-              {menuLinks.map((link: FooterLink) => (
+              {menuLinks.map((link: FooterLinkProps) => (
                 <FooterLink key={link.id} {...link} />
               ))}
             </ul>
@@ -137,7 +137,7 @@ export default function Footer({
           {/*{Third Column}*/}
           <div className='col-span-6 hidden px-3 pt-8 text-center md:col-span-3 md:flex md:text-left'>
             <ul>
-              {menuLinks2.map((link: FooterLink) => (
+              {menuLinks2.map((link: FooterLinkProps) => (
                 <FooterLink key={link.id} {...link} />
               ))}
             </ul>
@@ -149,7 +149,7 @@ export default function Footer({
               {contacts.officePhoneNumber3}
             </div>
             <div className='mx-auto flex w-48 flex-wrap justify-center space-x-0'>
-              {socialLinks.map((link: FooterLink) => (
+              {socialLinks.map((link: FooterLinkProps) => (
                 <a
                   key={link.id}
                   rel='noopener noreferrer'

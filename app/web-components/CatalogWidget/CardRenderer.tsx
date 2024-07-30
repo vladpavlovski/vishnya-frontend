@@ -112,7 +112,7 @@ const Filters = ({ setProjects, isMobileOpen, setIsMobileOpen }: Props) => {
       },
     };
     const newFilters = [
-      ...filters.filter((filter) => !filter.hasOwnProperty(filterProperty)),
+      ...filters.filter((filter) => filter[filterProperty] === undefined),
       newFilter,
     ];
     setFilters(newFilters);
@@ -138,9 +138,10 @@ const Filters = ({ setProjects, isMobileOpen, setIsMobileOpen }: Props) => {
         break;
     }
     const newFilters = [
-      ...filters.filter((filter) => !filter.hasOwnProperty('price')),
+      ...filters.filter((filter) => filter.price === undefined),
       newFilter,
     ];
+
     setFilters(newFilters);
   };
 
