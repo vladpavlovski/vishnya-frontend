@@ -33,7 +33,7 @@ export interface Attribute {
   locale: string
   heading?: any
   description?: any
-  url?: string
+  url: string
   alternativeText?: string
   contentSections: ContentSection[]
 }
