@@ -1,21 +1,21 @@
-'use client';
-import { Fade } from 'react-slideshow-image';
-import { getStrapiMedia } from '../utils/api-helpers';
-import Image from 'next/image';
+'use client'
+import { Fade } from 'react-slideshow-image'
+import { getStrapiMedia } from '../utils/api-helpers'
+import Image from 'next/image'
 
 interface ImageProps {
-  id: number;
+  id: number
   attributes: {
-    alternativeText: string | null;
-    caption: string | null;
-    url: string;
-  };
+    alternativeText: string | null
+    caption: string | null
+    url: string
+  }
 }
 
 interface SlidShowProps {
   files: {
-    data: ImageProps[];
-  };
+    data: ImageProps[]
+  }
 }
 
 export default function Slideshow({ data }: { data: SlidShowProps }) {
@@ -23,7 +23,7 @@ export default function Slideshow({ data }: { data: SlidShowProps }) {
     <div className='slide-container'>
       <Fade>
         {data.files.data.map((fadeImage: ImageProps, index) => {
-          const imageUrl = getStrapiMedia(fadeImage.attributes.url);
+          const imageUrl = getStrapiMedia(fadeImage.attributes.url)
           return (
             <div key={index}>
               {imageUrl && (
@@ -36,9 +36,9 @@ export default function Slideshow({ data }: { data: SlidShowProps }) {
                 />
               )}
             </div>
-          );
+          )
         })}
       </Fade>
     </div>
-  );
+  )
 }

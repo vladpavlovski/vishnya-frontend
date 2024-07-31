@@ -1,12 +1,13 @@
-import type { Metadata } from 'next';
-import './globals.css';
-import { getStrapiMedia, getStrapiURL } from './utils/api-helpers';
-import { fetchAPI } from './utils/fetch-api';
-import { FALLBACK_SEO } from '@/app/utils/constants';
-import Navbar from '@/app/web-components/Navbar';
-import Banner from '@/app/web-components/Banner';
-import Footer from '@/app/web-components/Footer';
-import localFont from 'next/font/local';
+import React from 'react'
+import type { Metadata } from 'next'
+import './globals.css'
+import { getStrapiMedia, getStrapiURL } from './utils/api-helpers'
+import { fetchAPI } from './utils/fetch-api'
+import { FALLBACK_SEO } from '@/app/utils/constants'
+import Navbar from '@/app/web-components/Navbar'
+import Banner from '@/app/web-components/Banner'
+import Footer from '@/app/web-components/Footer'
+import localFont from 'next/font/local'
 
 const beVietnam = localFont({
   src: [
@@ -20,7 +21,7 @@ const beVietnam = localFont({
     },
   ],
   variable: '--font-be-vietnam',
-});
+})
 
 const newAthena = localFont({
   src: [
@@ -30,16 +31,16 @@ const newAthena = localFont({
     },
   ],
   variable: '--font-new-athena',
-});
+})
 
 async function getGlobal(): Promise<any> {
-  const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+  const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN
 
   if (!token)
-    throw new Error('The Strapi API Token environment variable is not set.');
+    throw new Error('The Strapi API Token environment variable is not set.')
 
-  const path = `/global`;
-  const options = { headers: { Authorization: `Bearer ${token}` } };
+  const path = `/global`
+  const options = { headers: { Authorization: `Bearer ${token}` } }
 
   const urlParamsObject = {
     populate: [
@@ -53,17 +54,17 @@ async function getGlobal(): Promise<any> {
       'footer.menuLinks2',
       'footer.socialLinks',
     ],
-  };
-  return await fetchAPI(path, urlParamsObject, options);
+  }
+  return await fetchAPI(path, urlParamsObject, options)
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const meta = await getGlobal();
+  const meta = await getGlobal()
 
-  if (!meta.data) return FALLBACK_SEO;
+  if (!meta.data) return FALLBACK_SEO
 
-  const { metadata, favicon } = meta.data.attributes;
-  const { url } = favicon.data.attributes;
+  const { metadata, favicon } = meta.data.attributes
+  const { url } = favicon.data.attributes
 
   return {
     title: metadata.metaTitle,
@@ -71,27 +72,27 @@ export async function generateMetadata(): Promise<Metadata> {
     icons: {
       icon: [new URL(url, getStrapiURL())],
     },
-  };
+  }
 }
 
 export default async function RootLayout({
   children,
 }: {
-  readonly children: React.ReactNode;
+  readonly children: React.ReactNode
 }) {
-  const global = await getGlobal();
-  if (!global.data) return null;
+  const global = await getGlobal()
+  if (!global.data) return null
 
   const { notificationBanner, navbar, footer, contacts } =
-    global.data.attributes;
+    global.data.attributes
 
   const navbarLogoUrl = getStrapiMedia(
     navbar.navbarLogo.logoImg.data?.attributes.url
-  );
+  )
 
   const footerLogoUrl = getStrapiMedia(
     footer.footerLogo.logoImg.data?.attributes.url
-  );
+  )
 
   return (
     <html lang='ru'>
@@ -122,5 +123,5 @@ export default async function RootLayout({
         />
       </body>
     </html>
-  );
+  )
 }

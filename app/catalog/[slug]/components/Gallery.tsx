@@ -1,24 +1,24 @@
-'use client';
-import { Data } from '@/app/utils/model';
-import { Card, CardContent } from '@/components/ui/card';
+'use client'
+import { Data } from '@/app/utils/model'
+import { Card, CardContent } from '@/components/ui/card'
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@/components/ui/carousel';
-import Image from 'next/image';
-import { getStrapiMedia } from '@/app/utils/api-helpers';
-import ImgsViewer from 'react-images-viewer';
-import { useState } from 'react';
+} from '@/components/ui/carousel'
+import Image from 'next/image'
+import { getStrapiMedia } from '@/app/utils/api-helpers'
+import ImgsViewer from 'react-images-viewer'
+import { useState } from 'react'
 
 export const Gallery = ({ data, title }: { data: Data[]; title: string }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [imgIndex, setImgIndex] = useState(0);
-  const imagesViewerLinks = data.map(({ id, attributes }: any) => ({
+  const [isOpen, setIsOpen] = useState(false)
+  const [imgIndex, setImgIndex] = useState(0)
+  const imagesViewerLinks = data.map(({ attributes }: any) => ({
     src: getStrapiMedia(attributes.url),
-  }));
+  }))
 
   return (
     <div className='my-20'>
@@ -26,7 +26,7 @@ export const Gallery = ({ data, title }: { data: Data[]; title: string }) => {
       <Carousel className='mx-0'>
         <CarouselContent>
           {data.map(({ id, attributes }: any, index) => {
-            const imageUrl = getStrapiMedia(attributes.url);
+            const imageUrl = getStrapiMedia(attributes.url)
             return imageUrl ? (
               <CarouselItem
                 key={id}
@@ -36,8 +36,8 @@ export const Gallery = ({ data, title }: { data: Data[]; title: string }) => {
                   <CardContent className='flex max-h-32 items-center justify-center p-0 hover:cursor-pointer'>
                     <Image
                       onClick={() => {
-                        setIsOpen(true);
-                        setImgIndex(index);
+                        setIsOpen(true)
+                        setImgIndex(index)
                       }}
                       width={400}
                       height={200}
@@ -47,7 +47,7 @@ export const Gallery = ({ data, title }: { data: Data[]; title: string }) => {
                   </CardContent>
                 </Card>
               </CarouselItem>
-            ) : null;
+            ) : null
           })}
         </CarouselContent>
         <CarouselPrevious />
@@ -62,5 +62,5 @@ export const Gallery = ({ data, title }: { data: Data[]; title: string }) => {
         onClose={() => setIsOpen(false)}
       />
     </div>
-  );
-};
+  )
+}

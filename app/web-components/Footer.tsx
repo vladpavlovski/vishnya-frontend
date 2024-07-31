@@ -1,8 +1,8 @@
-'use client';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import Logo from './Logo';
-import { CgWebsite } from 'react-icons/cg';
+'use client'
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
+import Logo from './Logo'
+import { CgWebsite } from 'react-icons/cg'
 import {
   FaDiscord,
   FaFacebook,
@@ -11,64 +11,62 @@ import {
   FaTiktok,
   FaTelegram,
   FaWhatsapp,
-} from 'react-icons/fa';
-import { AiFillTwitterCircle, AiFillYoutube } from 'react-icons/ai';
-import { ContactProps } from '@/app/utils/model';
+} from 'react-icons/fa'
+import { AiFillTwitterCircle, AiFillYoutube } from 'react-icons/ai'
+import { ContactProps } from '@/app/utils/model'
 
 interface FooterLinkProps {
-  id: number;
-  url: string;
-  newTab: boolean;
-  text: string;
-  social?: string;
+  id: number
+  url: string
+  newTab: boolean
+  text: string
+  social?: string
 }
 
 function FooterLink({ url, text }: FooterLinkProps) {
-  const path = usePathname();
+  const path = usePathname()
   return (
     <li className='flex'>
       <Link
         href={url}
-        className={`hover:dark:text-primary ${
-          path === url && 'dark:border-primary dark:text-primary'
-        }}`}
+        className={`hover:dark:text-primary ${path === url && 'dark:border-primary dark:text-primary'}}`}
       >
         {text}
       </Link>
     </li>
-  );
+  )
 }
 
 function RenderSocialIcon({
   social,
   size,
 }: {
-  social: string | undefined;
-  size?: number;
+  social: string | undefined
+  size?: number
 }) {
   switch (social) {
     case 'WEBSITE':
-      return <CgWebsite size={size} />;
+      return <CgWebsite size={size} />
     case 'TWITTER':
-      return <AiFillTwitterCircle size={size} />;
+      return <AiFillTwitterCircle size={size} />
     case 'YOUTUBE':
-      return <AiFillYoutube size={size} />;
+      return <AiFillYoutube size={size} />
     case 'DISCORD':
-      return <FaDiscord size={size} />;
+      return <FaDiscord size={size} />
     case 'INSTAGRAM':
-      return <FaInstagram size={size} />;
+      return <FaInstagram size={size} />
     case 'FACEBOOK':
-      return <FaFacebook size={size} />;
+      return <FaFacebook size={size} />
     case 'LINKEDIN':
-      return <FaLinkedin size={size} />;
+      return <FaLinkedin size={size} />
     case 'TIKTOK':
-      return <FaTiktok size={size} />;
+      return <FaTiktok size={size} />
     case 'TELEGRAM':
-      return <FaTelegram size={size} />;
+      return <FaTelegram size={size} />
     case 'WHATSAPP':
-      return <FaWhatsapp size={size} />;
+      return <FaWhatsapp size={size} />
     default:
-      return null;
+      return null
   }
 }
 
@@ -79,12 +77,12 @@ export default function Footer({
   socialLinks,
   contacts,
 }: {
-  logoUrl: string | null;
-  logoText: string | null;
-  menuLinks: Array<FooterLinkProps>;
-  menuLinks2: Array<FooterLinkProps>;
-  socialLinks: Array<FooterLinkProps>;
-  contacts: ContactProps;
+  logoUrl: string | null
+  logoText: string | null
+  menuLinks: Array<FooterLinkProps>
+  menuLinks2: Array<FooterLinkProps>
+  socialLinks: Array<FooterLinkProps>
+  contacts: ContactProps
 }) {
   return (
     <footer className='bg-secondary pb-2 text-white'>
@@ -174,5 +172,5 @@ export default function Footer({
         </div>
       </div>
     </footer>
-  );
+  )
 }

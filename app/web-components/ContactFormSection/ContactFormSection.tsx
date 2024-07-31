@@ -1,13 +1,12 @@
-import { FormClient } from '@/app/web-components/ContactFormSection/FormClient';
-import emailFormImg from '@/public/images/email-form-bg.webp';
-import Image from 'next/image';
-import Link from 'next/link';
+import { FormClient } from '@/app/web-components/ContactFormSection/FormClient'
+import emailFormImg from '@/public/images/email-form-bg.webp'
+import Link from 'next/link'
 
 interface Props {
   data: {
-    subtitle: string;
-    title: string;
-  };
+    subtitle: string
+    title: string
+  }
 }
 /**
  * Renders the ContactFormSection component with the provided data.
@@ -25,13 +24,13 @@ export const ContactFormSection = ({ data }: Props) => {
         backgroundSize: 'cover',
         backgroundBlendMode: 'multiply',
       }}
-      className='text-black-100 bg-background p-8 md:py-16 '
+      className='text-black-100 bg-background p-8 md:py-16'
     >
       <div className='mx-auto px-3 sm:container'>
         <h3 className='font-NewAthena text-xs uppercase text-primary'>
           {data.subtitle}
         </h3>
-        <h2 className='font-NewAthena mb-8 text-3xl uppercase text-primary'>
+        <h2 className='mb-8 font-NewAthena text-3xl uppercase text-primary'>
           {data.title}
         </h2>
         <FormClient />
@@ -43,5 +42,5 @@ export const ContactFormSection = ({ data }: Props) => {
         </p>
       </div>
     </section>
-  );
-};
+  )
+}

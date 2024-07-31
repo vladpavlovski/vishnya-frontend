@@ -1,28 +1,28 @@
 interface VideoEmbedProps {
-  id: number;
-  url: string;
-  width?: string;
-  height?: string;
+  id: number
+  url: string
+  width?: string
+  height?: string
 }
 
 const getEmbedUrl = (videoUrl: string): string | null => {
   const youtubeRegex =
-    /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|watch\?v%3D)([\w-]{11}).*/;
-  const youtubeMatch = videoUrl.match(youtubeRegex);
+    /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|watch\?v%3D)([\w-]{11}).*/
+  const youtubeMatch = videoUrl.match(youtubeRegex)
 
   if (youtubeMatch && youtubeMatch[2].length === 11) {
-    return `https://www.youtube.com/embed/${youtubeMatch[2]}`;
+    return `https://www.youtube.com/embed/${youtubeMatch[2]}`
   }
 
   // Add support for other video platforms here
 
-  return null;
-};
+  return null
+}
 
 export default function VideoEmbed({ data }: { data: VideoEmbedProps }) {
-  const embedUrl = getEmbedUrl(data.url);
+  const embedUrl = getEmbedUrl(data.url)
 
-  if (!embedUrl) return <div>Invalid video URL</div>;
+  if (!embedUrl) return <div>Invalid video URL</div>
 
   return (
     <div className='video-embed pb-56.25 relative my-8 h-72 overflow-hidden lg:h-[450px]'>
@@ -36,5 +36,5 @@ export default function VideoEmbed({ data }: { data: VideoEmbedProps }) {
         className='absolute left-0 top-0 h-full w-full'
       />
     </div>
-  );
+  )
 }

@@ -1,10 +1,10 @@
-'use client';
-import { Button } from '@/components/ui/button';
-import { DialogDownload } from '@/app/web-components/DialogDownload/DialogDownload';
-import { useState } from 'react';
+'use client'
+import { Button } from '@/components/ui/button'
+import { DialogDownload } from '@/app/web-components/DialogDownload/DialogDownload'
+import { useState } from 'react'
 
 export const SlideActions = () => {
-  const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false);
+  const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false)
   return (
     <div
       id='slide-actions'
@@ -27,5 +27,5 @@ export const SlideActions = () => {
         setIsOpen={setIsDownloadDialogOpen}
       />
     </div>
-  );
-};
+  )
+}

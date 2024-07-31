@@ -1,8 +1,8 @@
-'use client';
-import Link from 'next/link';
-import React, { useLayoutEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FormClient } from '@/app/web-components/ContactFormSection/FormClient';
+'use client'
+import Link from 'next/link'
+import React, { useLayoutEffect, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FormClient } from '@/app/web-components/ContactFormSection/FormClient'
 const ThankYouMessage = () => (
   <motion.div
     initial={{ opacity: 0, y: -20 }}
@@ -11,22 +11,22 @@ const ThankYouMessage = () => (
   >
     <span className='text-white'>Thank you for your inquiry</span>
   </motion.div>
-);
+)
 
 export const Content = ({ isOpen }: { isOpen: boolean }) => {
-  const [submissionStatus, setSubmissionStatus] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState(false)
 
   const handleSubmit = () => {
-    setSubmissionStatus(true);
-  };
+    setSubmissionStatus(true)
+  }
 
   useLayoutEffect(() => {
     if (!isOpen) {
       setTimeout(() => {
-        setSubmissionStatus(false);
-      }, 1000);
+        setSubmissionStatus(false)
+      }, 1000)
     }
-  }, [isOpen]);
+  }, [isOpen])
   return (
     <AnimatePresence>
       {submissionStatus ? (
@@ -46,5 +46,5 @@ export const Content = ({ isOpen }: { isOpen: boolean }) => {
         </React.Fragment>
       )}
     </AnimatePresence>
-  );
-};
+  )
+}

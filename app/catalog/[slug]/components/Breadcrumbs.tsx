@@ -5,8 +5,8 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
-import Link from 'next/link';
+} from '@/components/ui/breadcrumb'
+import Link from 'next/link'
 
 export const ProjectBreadcrumbs = ({ title }: { title: string }) => {
   return (
@@ -29,5 +29,5 @@ export const ProjectBreadcrumbs = ({ title }: { title: string }) => {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
-};
+  )
+}

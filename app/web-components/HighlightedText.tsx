@@ -1,8 +1,8 @@
 interface HighlightedTextProps {
-  text: string;
-  tag: string;
-  className?: string;
-  color?: string;
+  text: string
+  tag: string
+  className?: string
+  color?: string
 }
 
 export default function HighlightedText({
@@ -11,21 +11,21 @@ export default function HighlightedText({
   className,
   color,
 }: HighlightedTextProps) {
-  const tempText = text.split(' ');
-  let result = [];
+  const tempText = text.split(' ')
+  let result = []
 
-  result.push(`<${tag} class="${className ? className : ''}">`);
+  result.push(`<${tag} class="${className ? className : ''}">`)
 
   tempText.forEach((word: string, index: number) => {
     if (word.includes('[')) {
-      const highlight = word.replace('[', '').replace(']', '');
+      const highlight = word.replace('[', '').replace(']', '')
       result.push(
         `<span key=${index} class="${color ? color : ''}">${highlight}</span> `
-      );
-    } else result.push(word + ' ');
-  });
+      )
+    } else result.push(word + ' ')
+  })
 
-  result.push(`</${tag}>`);
+  result.push(`</${tag}>`)
 
-  return <div dangerouslySetInnerHTML={{ __html: result.join('') }} />;
+  return <div dangerouslySetInnerHTML={{ __html: result.join('') }} />
 }

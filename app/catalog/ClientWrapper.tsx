@@ -1,21 +1,21 @@
-'use client';
-import { fetchAPI } from '@/app//utils/fetch-api';
-import { CardRenderer } from '@/app/web-components/CatalogWidget/CardRenderer';
-import { useCallback, useEffect, useState } from 'react';
-import { Meta } from '@/app/utils/model';
+'use client'
+import { fetchAPI } from '@/app//utils/fetch-api'
+import { CardRenderer } from '@/app/web-components/CatalogWidget/CardRenderer'
+import { useCallback, useEffect, useState } from 'react'
+import { Meta } from '@/app/utils/model'
 
-const NEXT_PUBLIC_PAGE_LIMIT = 9;
+const NEXT_PUBLIC_PAGE_LIMIT = 9
 
 export const CatalogClientWrapper = () => {
-  const [meta, setMeta] = useState<Meta | undefined>();
-  const [data, setData] = useState<any>([]);
-  const [isLoading, setLoading] = useState(true);
+  const [meta, setMeta] = useState<Meta | undefined>()
+  const [data, setData] = useState<any>([])
+  const [isLoading, setLoading] = useState(true)
 
   const fetchData = useCallback(async (start: number, limit: number) => {
-    setLoading(true);
+    setLoading(true)
     try {
-      const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-      const path = `/projects`;
+      const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN
+      const path = `/projects`
       const urlParamsObject = {
         sort: { createdAt: 'desc' },
         populate: {
@@ -45,36 +45,37 @@ export const CatalogClientWrapper = () => {
           start: start,
           limit: limit,
         },
-      };
-      const options = { headers: { Authorization: `Bearer ${token}` } };
-      const responseData = await fetchAPI(path, urlParamsObject, options);
+      }
+      const options = { headers: { Authorization: `Bearer ${token}` } }
+      const responseData = await fetchAPI(path, urlParamsObject, options)
 
       if (start === 0) {
-        setData(responseData.data);
+        setData(responseData.data)
       } else {
-        setData((prevData: any[]) => [...prevData, ...responseData.data]);
+        setData((prevData: any[]) => [...prevData, ...responseData.data])
       }
 
-      setMeta(responseData.meta);
+      setMeta(responseData.meta)
     } catch (error) {
-      console.error(error);
+      // eslint-disable-next-line no-console
+      console.error(error)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  }, []);
+  }, [])
 
   function loadMoreProjects(): void {
-    const nextPosts = meta!.pagination.start + meta!.pagination.limit;
-    fetchData(nextPosts, Number(NEXT_PUBLIC_PAGE_LIMIT));
+    const nextPosts = meta!.pagination.start + meta!.pagination.limit
+    fetchData(nextPosts, Number(NEXT_PUBLIC_PAGE_LIMIT))
   }
 
   useEffect(() => {
-    fetchData(0, Number(NEXT_PUBLIC_PAGE_LIMIT));
-  }, [fetchData]);
+    fetchData(0, Number(NEXT_PUBLIC_PAGE_LIMIT))
+  }, [fetchData])
 
   const noMoreProjects = meta
     ? meta?.pagination.start + meta?.pagination.limit >= meta?.pagination.total
-    : false;
+    : false
   return (
     <CardRenderer
       inCatalog
@@ -85,5 +86,5 @@ export const CatalogClientWrapper = () => {
       noMoreProjects={noMoreProjects}
       isLoading={isLoading}
     />
-  );
-};
+  )
+}

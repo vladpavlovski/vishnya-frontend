@@ -1,0 +1,8 @@
+.gitignore
+contentstack/generated.d.ts
+node_modules
+.next
+yarn.lock
+public 
+coverage
+.gitkeep

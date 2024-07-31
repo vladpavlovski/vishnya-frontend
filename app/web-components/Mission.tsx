@@ -1,28 +1,27 @@
-import { BlocksRenderer } from '@strapi/blocks-react-renderer';
-import { Picture } from '@/app/utils/model';
-import Image from 'next/image';
-import { getStrapiURL } from '@/app/utils/api-helpers';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer'
+import { Picture } from '@/app/utils/model'
+import Image from 'next/image'
+import { getStrapiURL } from '@/app/utils/api-helpers'
 interface MissionProps {
   data: {
-    title: string;
-    sectionName: string;
-    description: [];
-    missionTitle1: string;
-    missionDescription1: string;
-    missionImage1: Picture;
-    missionTitle2: string;
-    missionDescription2: string;
-    missionImage2: Picture;
-    missionTitle3: string;
-    missionDescription3: string;
-    missionImage3: Picture;
-  };
+    title: string
+    sectionName: string
+    description: []
+    missionTitle1: string
+    missionDescription1: string
+    missionImage1: Picture
+    missionTitle2: string
+    missionDescription2: string
+    missionImage2: Picture
+    missionTitle3: string
+    missionDescription3: string
+    missionImage3: Picture
+  }
 }
 
 export const Mission = ({ data }: MissionProps) => {
   const {
     title,
-    sectionName,
     description,
     missionTitle1,
     missionDescription1,
@@ -33,7 +32,7 @@ export const Mission = ({ data }: MissionProps) => {
     missionTitle3,
     missionDescription3,
     missionImage3,
-  } = data;
+  } = data
 
   return (
     <section className='mx-auto max-w-7xl bg-background px-4 sm:px-6 md:py-8 lg:px-8'>
@@ -101,5 +100,5 @@ export const Mission = ({ data }: MissionProps) => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}

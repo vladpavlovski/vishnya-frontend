@@ -1,30 +1,30 @@
-'use client';
-import { useState } from 'react';
-import { getStrapiURL } from '../utils/api-helpers';
+'use client'
+import { useState } from 'react'
+import { getStrapiURL } from '../utils/api-helpers'
 
 export default function FormSubmit({
   placeholder,
   text,
 }: {
-  placeholder: string;
-  text: string;
+  placeholder: string
+  text: string
 }) {
-  const [email, setEmail] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const token = process.env.NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN;
+  const [email, setEmail] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const token = process.env.NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
   async function handleSubmit() {
     if (email === '') {
-      setErrorMessage('Email cannot be blank.');
-      return;
+      setErrorMessage('Email cannot be blank.')
+      return
     }
 
     if (!emailRegex.test(email)) {
-      setErrorMessage('Invalid email format.');
-      return;
+      setErrorMessage('Invalid email format.')
+      return
     }
 
     const res = await fetch(getStrapiURL() + '/api/lead-form-submissions', {
@@ -34,15 +34,15 @@ export default function FormSubmit({
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ data: { email } }),
-    });
+    })
 
     if (!res.ok) {
-      setErrorMessage('Email failed to submit.');
-      return;
+      setErrorMessage('Email failed to submit.')
+      return
     }
-    setErrorMessage('');
-    setSuccessMessage('Email successfully submitted!');
-    setEmail('');
+    setErrorMessage('')
+    setSuccessMessage('Email successfully submitted!')
+    setEmail('')
   }
 
   return (
@@ -80,5 +80,5 @@ export default function FormSubmit({
         )}
       </div>
     </div>
-  );
+  )
 }

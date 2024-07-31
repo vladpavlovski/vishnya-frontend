@@ -1,18 +1,18 @@
-'use client';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { motion } from 'framer-motion';
+'use client'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { motion } from 'framer-motion'
 
-import { z } from 'zod';
-import { Button } from '@/components/ui/button';
+import { z } from 'zod'
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
 
 const formSchema = z.object({
   name: z
@@ -39,14 +39,14 @@ const formSchema = z.object({
     .max(50, {
       message: 'Электронная почта должна содержать не более 50 символов',
     }),
-});
+})
 
 export const FormClient = ({
   inModal,
   handleSubmit,
 }: {
-  inModal?: boolean;
-  handleSubmit?: () => void;
+  inModal?: boolean
+  handleSubmit?: () => void
 }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -55,13 +55,13 @@ export const FormClient = ({
       phone: '',
       email: '',
     },
-  });
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  })
+  // values: z.infer<typeof formSchema>
+  function onSubmit() {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
-    handleSubmit?.();
+    // console.log(values)
+    handleSubmit?.()
   }
 
   return (
@@ -130,12 +130,12 @@ export const FormClient = ({
           )}
         />
         <Button
-          className='font-NewAthena w-full py-6 text-xl font-bold hover:bg-secondary'
+          className='w-full py-6 font-NewAthena text-xl font-bold hover:bg-secondary'
           type='submit'
         >
           Отправить
         </Button>
       </motion.form>
     </Form>
-  );
-};
+  )
+}

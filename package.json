@@ -7,8 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --check --ignore-path .gitignore .",
-    "format:fix": "prettier --write --ignore-path .gitignore ."
+    "lint:fix": "eslint --fix",
+    "prettier:check": "prettier --check \"**/*.{ts,tsx,json}\"",
+    "prettier:fix": "prettier --write .",
+    "postinstall": "husky",
+    "prepare": "husky"
   },
   "dependencies": {
     "@headlessui/react": "2.1.2",
@@ -50,10 +53,18 @@
     "eslint": "8.56.0",
     "eslint-config-next": "14.2.5",
     "eslint-config-prettier": "9.1.0",
+    "husky": "^9.1.4",
+    "lint-staged": "^15.2.7",
     "postcss": "8",
     "prettier": "3.3.3",
     "prettier-plugin-tailwindcss": "0.6.5",
     "tailwindcss": "3.4.7",
     "typescript": "5"
+  },
+  "lint-staged": {
+    "**/*": [
+      "pnpm prettier:fix",
+      "pnpm lint:fix"
+    ]
   }
 }

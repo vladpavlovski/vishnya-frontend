@@ -4,6 +4,8 @@
     "es2021": true
   },
   "extends": [
+    "next",
+    "prettier",
     "eslint:recommended",
     "plugin:react/recommended",
     "next/core-web-vitals"
@@ -18,9 +20,8 @@
   "plugins": ["react"],
   "rules": {
     "react/prop-types": 0,
-    "no-undef": "off",
-    "no-unused-vars": "off",
-    "react-hooks/exhaustive-deps": "off",
-    "@next/next/no-img-element": "off"
+    "@next/next/no-img-element": "off",
+    "no-console": "error",
+    "react/jsx-indent": ["error", 2]
   }
 }

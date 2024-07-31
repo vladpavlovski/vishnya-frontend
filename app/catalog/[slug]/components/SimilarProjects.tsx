@@ -1,7 +1,4 @@
-import { getStrapiMedia } from '@/app/utils/api-helpers';
-import { Card, CardContent } from '@/components/ui/card';
-import { CarouselContent, CarouselItem } from '@/components/ui/carousel';
-import Image from 'next/image';
+import { CarouselContent } from '@/components/ui/carousel'
 
 export const SimilarProjects = () => {
   return (
@@ -32,5 +29,5 @@ export const SimilarProjects = () => {
         })} */}
       </CarouselContent>
     </div>
-  );
-};
+  )
+}

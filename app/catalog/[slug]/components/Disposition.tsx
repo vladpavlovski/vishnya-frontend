@@ -1,24 +1,24 @@
-import { getStrapiMedia } from '@/app/utils/api-helpers';
-import { ContentProps } from '@/app/utils/model';
+import { getStrapiMedia } from '@/app/utils/api-helpers'
+import { ContentProps } from '@/app/utils/model'
 
-import Image from 'next/image';
+import Image from 'next/image'
 export const Disposition = ({ data }: ContentProps) => {
   const {
     attributes: { disposition, paymentPlans },
-  } = data;
+  } = data
 
   if (!disposition?.data?.attributes) {
     // do not render if there is no disposition
-    return null;
+    return null
   }
 
   const {
     data: {
       attributes: { url, alternativeText },
     },
-  } = disposition;
+  } = disposition
 
-  const imageUrl = getStrapiMedia(url);
+  const imageUrl = getStrapiMedia(url)
   return (
     <div className='my-16 flex'>
       <div className='w-1/2 flex-col'>
@@ -50,5 +50,5 @@ export const Disposition = ({ data }: ContentProps) => {
         </ul>
       </div>
     </div>
-  );
-};
+  )
+}

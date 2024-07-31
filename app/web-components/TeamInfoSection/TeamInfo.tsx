@@ -1,25 +1,25 @@
-import { getStrapiMedia } from '@/app/utils/api-helpers';
-import { Picture } from '@/app/utils/model';
-import Image from 'next/image';
-import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { getStrapiMedia } from '@/app/utils/api-helpers'
+import { Picture } from '@/app/utils/model'
+import Image from 'next/image'
+import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 
 interface Props {
   data: {
-    title: string;
-    description: [];
-    backgroundImage: Picture;
-  };
+    title: string
+    description: []
+    backgroundImage: Picture
+  }
 }
 
 export const TeamInfo = ({ data }: Props) => {
-  const { title, description, backgroundImage } = data;
+  const { title, description, backgroundImage } = data
 
   const {
     data: {
       attributes: { url },
     },
-  } = backgroundImage;
-  const imageUrl = getStrapiMedia(url);
+  } = backgroundImage
+  const imageUrl = getStrapiMedia(url)
 
   return (
     <section className='bg-background pb-32'>
@@ -61,5 +61,5 @@ export const TeamInfo = ({ data }: Props) => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}

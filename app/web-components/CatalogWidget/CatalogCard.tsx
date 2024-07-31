@@ -1,18 +1,17 @@
-'use client';
-import { ShortProject } from '@/app/utils/model';
-import Image from 'next/image';
-import squareCardIcon from '@/public/icons/squareCardIcon.svg';
-import dispositionIcon from '@/public/icons/dispositionIcon.svg';
-import bathroomIcon from '@/public/icons/bathroomIcon.svg';
-import bedroomIcon from '@/public/icons/bedroomIcon.svg';
-import { limitString } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { getStrapiMedia } from '@/app/utils/api-helpers';
+'use client'
+import { ShortProject } from '@/app/utils/model'
+import Image from 'next/image'
+import squareCardIcon from '@/public/icons/squareCardIcon.svg'
+import dispositionIcon from '@/public/icons/dispositionIcon.svg'
+import bathroomIcon from '@/public/icons/bathroomIcon.svg'
+import bedroomIcon from '@/public/icons/bedroomIcon.svg'
+import { limitString } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+import { getStrapiMedia } from '@/app/utils/api-helpers'
 
 export const CatalogCard = ({ data }: { data: ShortProject }) => {
   const {
-    id,
     attributes: {
       title,
       price,
@@ -26,14 +25,14 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
       exteriorGallery,
       slug,
     },
-  } = data;
+  } = data
 
   const cardImageUrl = exteriorGallery
     ? getStrapiMedia(exteriorGallery?.data?.[0]?.attributes?.url)
-    : null;
+    : null
   return (
     <div className='w-full rounded'>
-      <div className='font-NewAthena rounded-t bg-secondary px-3 py-2 text-sm font-bold uppercase text-white'>
+      <div className='rounded-t bg-secondary px-3 py-2 font-NewAthena text-sm font-bold uppercase text-white'>
         {cardHeaderTitle}
       </div>
       <div className='flex flex-col md:flex-row'>
@@ -64,13 +63,13 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
         <div className='rounded-md-br bg-projectCard p-4 md:w-7/12 xl:p-6'>
           {/*{Price}*/}
           <p className='font-NewAthena text-xl xl:text-3xl'>
-            <span className='font-NewAthena mr-1 font-bold text-primary'>
+            <span className='mr-1 font-NewAthena font-bold text-primary'>
               $
             </span>
             {price}
           </p>
           {/*{Title}*/}
-          <h3 className='font-NewAthena text-md font-bold text-secondary xl:text-xl'>
+          <h3 className='text-md font-NewAthena font-bold text-secondary xl:text-xl'>
             {title}
           </h3>
           {/*{Icons}*/}
@@ -135,12 +134,12 @@ export const CatalogCard = ({ data }: { data: ShortProject }) => {
           </p>
           <Button
             asChild
-            className='font-NewAthena mt-4 w-full bg-secondary px-20 hover:bg-primary'
+            className='mt-4 w-full bg-secondary px-20 font-NewAthena hover:bg-primary'
           >
             <Link href={`/catalog/${slug}`}>Подробнее</Link>
           </Button>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

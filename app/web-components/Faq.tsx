@@ -3,17 +3,17 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion';
+} from '@/components/ui/accordion'
 
 interface FaqProps {
   data: {
-    title: string;
-    questions: { id: number; question: string; answer: string }[];
-  };
+    title: string
+    questions: { id: number; question: string; answer: string }[]
+  }
 }
 
 export const Faq = ({ data }: FaqProps) => {
-  const { title, questions } = data;
+  const { title, questions } = data
   return (
     <section className='text-black-100 bg-background py-32'>
       <div className='mx-auto px-3 sm:container'>
@@ -35,5 +35,5 @@ export const Faq = ({ data }: FaqProps) => {
         </Accordion>
       </div>
     </section>
-  );
-};
+  )
+}

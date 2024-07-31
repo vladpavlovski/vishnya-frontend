@@ -1,5 +1,5 @@
-import type { Config } from 'tailwindcss';
-const plugin = require('tailwindcss/plugin');
+import type { Config } from 'tailwindcss'
+const plugin = require('tailwindcss/plugin')
 
 const config = {
   darkMode: ['class'],
@@ -98,9 +98,9 @@ const config = {
           }),
         },
         { values: theme('textShadow') }
-      );
+      )
     }),
   ],
-} satisfies Config;
+} satisfies Config
 
-export default config;
+export default config

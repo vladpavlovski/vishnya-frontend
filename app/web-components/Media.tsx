@@ -1,21 +1,21 @@
-import { getStrapiMedia } from '../utils/api-helpers';
-import Image from 'next/image';
+import { getStrapiMedia } from '../utils/api-helpers'
+import Image from 'next/image'
 
 interface MediaProps {
   file: {
     data: {
-      id: string;
+      id: string
       attributes: {
-        url: string;
-        name: string;
-        alternativeText: string;
-      };
-    };
-  };
+        url: string
+        name: string
+        alternativeText: string
+      }
+    }
+  }
 }
 
 export default function Media({ data }: { data: MediaProps }) {
-  const imgUrl = getStrapiMedia(data.file.data.attributes.url);
+  const imgUrl = getStrapiMedia(data.file.data.attributes.url)
   return (
     <div className='xl:h-112 2xl:h-128 mt-8 flex h-72 items-center justify-center sm:h-80 lg:mt-0 lg:h-96'>
       <Image
@@ -26,5 +26,5 @@ export default function Media({ data }: { data: MediaProps }) {
         height={400}
       />
     </div>
-  );
+  )
 }

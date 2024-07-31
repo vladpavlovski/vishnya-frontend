@@ -1,43 +1,35 @@
-import HighlightedText from '../HighlightedText';
-import { getStrapiMedia } from '../../utils/api-helpers';
-import { SlideActions } from '@/app/web-components/MainSlide/SlideActions';
-
-interface Button {
-  id: string;
-  url: string;
-  text: string;
-  type: string;
-  newTab: boolean;
-}
+import HighlightedText from '../HighlightedText'
+import { getStrapiMedia } from '../../utils/api-helpers'
+import { SlideActions } from '@/app/web-components/MainSlide/SlideActions'
 
 interface Picture {
   data: {
-    id: string;
+    id: string
     attributes: {
-      url: string;
-      name: string;
-      alternativeText: string;
-    };
-  };
+      url: string
+      name: string
+      alternativeText: string
+    }
+  }
 }
 
 interface MainSlideProps {
   data: {
-    id: string;
-    title: string;
-    description: string;
-    backgroundImage: Picture;
-    bullet1Title: string;
-    bullet1Description: string;
-    bullet1Value: string;
-    bullet2Title: string;
-    bullet2Description: string;
-    bullet2Value: string;
-  };
+    id: string
+    title: string
+    description: string
+    backgroundImage: Picture
+    bullet1Title: string
+    bullet1Description: string
+    bullet1Value: string
+    bullet2Title: string
+    bullet2Description: string
+    bullet2Value: string
+  }
 }
 
 export default function MainSlide({ data }: MainSlideProps) {
-  const imgUrl = getStrapiMedia(data.backgroundImage.data.attributes.url);
+  const imgUrl = getStrapiMedia(data.backgroundImage.data.attributes.url)
 
   const backgroundStyling = {
     backgroundImage: `url('${imgUrl || ''}')`,
@@ -45,7 +37,7 @@ export default function MainSlide({ data }: MainSlideProps) {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'bottom',
-  };
+  }
 
   return (
     <section id='main-slide' className='text-black-100 bg-background'>
@@ -54,7 +46,7 @@ export default function MainSlide({ data }: MainSlideProps) {
         className={`flex justify-center px-6 py-8 md:px-24 md:py-32`}
       >
         <div className='mx-auto py-4 sm:container'>
-          <div className='flex max-w-5xl flex-col justify-center rounded-sm bg-gradient-to-r from-white/[.85] via-white/[.8] to-white/[.4] px-4 py-10 text-center backdrop-blur-sm md:rounded-md lg:p-10  lg:text-left'>
+          <div className='flex max-w-5xl flex-col justify-center rounded-sm bg-gradient-to-r from-white/[.85] via-white/[.8] to-white/[.4] px-4 py-10 text-center backdrop-blur-sm md:rounded-md lg:p-10 lg:text-left'>
             <HighlightedText
               text={data.title}
               tag='h1'
@@ -106,5 +98,5 @@ export default function MainSlide({ data }: MainSlideProps) {
         </div>
       </div>
     </section>
-  );
+  )
 }

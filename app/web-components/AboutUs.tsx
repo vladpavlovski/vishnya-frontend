@@ -1,19 +1,19 @@
-import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 
 interface AboutUsProps {
   data: {
-    title: string;
-    sectionTitle: string;
+    title: string
+    sectionTitle: string
     advantage: {
-      id: number;
-      title: string;
-      description: [];
-      icon: string;
-    }[];
-  };
+      id: number
+      title: string
+      description: []
+      icon: string
+    }[]
+  }
 }
 export const AboutUs = ({ data }: AboutUsProps) => {
-  const { title, sectionTitle, advantage } = data;
+  const { title, sectionTitle, advantage } = data
   return (
     <section className='mx-auto max-w-7xl bg-background px-4 py-8 sm:px-6 md:py-16 lg:px-8'>
       <div className='py-12 text-center'>
@@ -26,7 +26,7 @@ export const AboutUs = ({ data }: AboutUsProps) => {
       </div>
       <div className='md:mt-10'>
         <ul className='gap-8 md:grid md:grid-cols-2 lg:grid-cols-3'>
-          {advantage.map((advantage, index) => (
+          {advantage.map((advantage) => (
             <li key={advantage.id}>
               <div className='space-y-4'>
                 {/* Place for an icon */}
@@ -44,5 +44,5 @@ export const AboutUs = ({ data }: AboutUsProps) => {
         </ul>
       </div>
     </section>
-  );
-};
+  )
+}

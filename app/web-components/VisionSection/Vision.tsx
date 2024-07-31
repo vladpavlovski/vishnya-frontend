@@ -1,23 +1,23 @@
-import { getStrapiMedia } from '@/app/utils/api-helpers';
-import { Picture } from '@/app/utils/model';
-import Image from 'next/image';
+import { getStrapiMedia } from '@/app/utils/api-helpers'
+import { Picture } from '@/app/utils/model'
+import Image from 'next/image'
 
 interface Props {
   data: {
-    title: string;
-    subtitle: string;
-    description: string;
+    title: string
+    subtitle: string
+    description: string
     concepts: {
-      id: number;
-      title: string;
-      description: string;
-      backgroundImage: Picture;
-    }[];
-  };
+      id: number
+      title: string
+      description: string
+      backgroundImage: Picture
+    }[]
+  }
 }
 
 export const Vision = ({ data }: Props) => {
-  const { title, subtitle, description, concepts } = data;
+  const { title, subtitle, description, concepts } = data
 
   return (
     <section className='bg-background py-32'>
@@ -32,8 +32,8 @@ export const Vision = ({ data }: Props) => {
               data: {
                 attributes: { url },
               },
-            } = concept.backgroundImage;
-            const imageUrl = getStrapiMedia(url);
+            } = concept.backgroundImage
+            const imageUrl = getStrapiMedia(url)
             return (
               <div key={concept.id} className='relative gap-2'>
                 {imageUrl && (
@@ -58,10 +58,10 @@ export const Vision = ({ data }: Props) => {
                   </p>
                 </div>
               </div>
-            );
+            )
           })}
         </div>
       </div>
     </section>
-  );
-};
+  )
+}

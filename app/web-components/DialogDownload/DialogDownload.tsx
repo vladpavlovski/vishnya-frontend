@@ -3,12 +3,13 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
-import emailFormImg from '@/public/images/email-form-bg.webp';
-import { Content } from '@/app/web-components/DialogDownload/Content';
+} from '@/components/ui/dialog'
+import emailFormImg from '@/public/images/email-form-bg.webp'
+import { Content } from '@/app/web-components/DialogDownload/Content'
 interface Props {
-  isOpen: boolean;
-  setIsOpen: (value: boolean) => void;
+  isOpen: boolean
+  // eslint-disable-next-line no-unused-vars
+  setIsOpen: (value: boolean) => void
 }
 
 export const DialogDownload = ({ isOpen, setIsOpen }: Props) => {
@@ -16,7 +17,7 @@ export const DialogDownload = ({ isOpen, setIsOpen }: Props) => {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent
         onPointerDownOutside={(e) => {
-          e.preventDefault();
+          e.preventDefault()
         }}
         className='border-none'
         style={{
@@ -35,5 +36,5 @@ export const DialogDownload = ({ isOpen, setIsOpen }: Props) => {
         </DialogHeader>
       </DialogContent>
     </Dialog>
-  );
-};
+  )
+}

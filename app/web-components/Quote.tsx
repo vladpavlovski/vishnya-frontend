@@ -1,13 +1,13 @@
 interface QuoteProps {
   data: {
-    title: string;
-    body: string;
-    author: string;
-  };
+    title: string
+    body: string
+    author: string
+  }
 }
 
 export default function Quote({ data }: QuoteProps) {
-  const { title, body, author } = data;
+  const { title, body, author } = data
 
   return (
     <div className='mx-12 flex flex-col items-center py-44 lg:mx-0'>
@@ -36,5 +36,5 @@ export default function Quote({ data }: QuoteProps) {
       <span className='my-2 h-1 w-12 rounded-lg dark:bg-violet-400'></span>
       {author ? <p>{author}</p> : 'unknown'}
     </div>
-  );
+  )
 }

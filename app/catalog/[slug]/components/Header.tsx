@@ -1,15 +1,15 @@
-import { Button } from '@/components/ui/button';
-import Image from 'next/image';
-import Link from 'next/link';
-import priceIcon from '@/public/icons/priceIcon.svg';
-import squareIcon from '@/public/icons/squareIcon.svg';
-import roomIcon from '@/public/icons/roomIcon.svg';
-import handoverIcon from '@/public/icons/handoverIcon.svg';
-import pinIcon from '@/public/icons/pinIcon.svg';
-import buildingIcon from '@/public/icons/buildingIcon.svg';
-import developerIcon from '@/public/icons/developerIcon.svg';
-import React from 'react';
-import { ContentProps } from '@/app/utils/model';
+import { Button } from '@/components/ui/button'
+import Image from 'next/image'
+import Link from 'next/link'
+import priceIcon from '@/public/icons/priceIcon.svg'
+import squareIcon from '@/public/icons/squareIcon.svg'
+import roomIcon from '@/public/icons/roomIcon.svg'
+import handoverIcon from '@/public/icons/handoverIcon.svg'
+import pinIcon from '@/public/icons/pinIcon.svg'
+import buildingIcon from '@/public/icons/buildingIcon.svg'
+import developerIcon from '@/public/icons/developerIcon.svg'
+import React from 'react'
+import { ContentProps } from '@/app/utils/model'
 
 export const Header = ({ data }: ContentProps) => {
   const {
@@ -20,12 +20,10 @@ export const Header = ({ data }: ContentProps) => {
       location,
       propertyType,
       developer,
-      disposition,
       price,
-      currency,
       handoverDate,
     },
-  } = data;
+  } = data
 
   const projectIcons = [
     {
@@ -63,9 +61,9 @@ export const Header = ({ data }: ContentProps) => {
       text: 'Застройщик',
       value: developer,
     },
-  ];
+  ]
 
-  const ICON_SIDE_SIZE = 17;
+  const ICON_SIDE_SIZE = 17
 
   return (
     <>
@@ -123,5 +121,5 @@ export const Header = ({ data }: ContentProps) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}

@@ -1,51 +1,49 @@
-'use client';
-import Logo from './Logo';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Dialog } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { useState } from 'react';
-import { ContactProps } from '@/app/utils/model';
-import { SlideActions } from '@/app/web-components/MainSlide/SlideActions';
-import Image from 'next/image';
-import phoneCallIcon from '@/public/phonecall.svg';
-import whatsAppIcon from '@/public/whatsapp.svg';
-import telegramIcon from '@/public/telegram.svg';
-import { DialogDownload } from '@/app/web-components/DialogDownload/DialogDownload';
+'use client'
+import Logo from './Logo'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { Dialog } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useState } from 'react'
+import { ContactProps } from '@/app/utils/model'
+import { SlideActions } from '@/app/web-components/MainSlide/SlideActions'
+import Image from 'next/image'
+import phoneCallIcon from '@/public/phonecall.svg'
+import whatsAppIcon from '@/public/whatsapp.svg'
+import telegramIcon from '@/public/telegram.svg'
+import { DialogDownload } from '@/app/web-components/DialogDownload/DialogDownload'
 
 interface NavLinkProps {
-  id: number;
-  url: string;
-  newTab: boolean;
-  text: string;
+  id: number
+  url: string
+  newTab: boolean
+  text: string
 }
 
 interface MobileNavLinkProps extends NavLinkProps {
-  closeMenu: () => void;
+  closeMenu: () => void
 }
 
 function NavLink({ url, text }: NavLinkProps) {
-  const path = usePathname();
+  const path = usePathname()
 
   return (
     <li className='flex'>
       <Link
         href={url}
-        className={`-mb-1 flex items-center border-b-2 sm:mx-3 ${
-          path === url && 'border-primary text-primary'
-        }}`}
+        className={`-mb-1 flex items-center border-b-2 sm:mx-3 ${path === url && 'border-primary text-primary'}}`}
       >
         {text}
       </Link>
     </li>
-  );
+  )
 }
 
 function MobileNavLink({ url, text, closeMenu }: MobileNavLinkProps) {
-  const path = usePathname();
+  const path = usePathname()
   const handleClick = () => {
-    closeMenu();
-  };
+    closeMenu()
+  }
   return (
     <div className='flex'>
       <Link
@@ -58,7 +56,7 @@ function MobileNavLink({ url, text, closeMenu }: MobileNavLinkProps) {
         {text}
       </Link>
     </div>
-  );
+  )
 }
 
 const IconAction = ({
@@ -67,10 +65,10 @@ const IconAction = ({
   link,
   onClick,
 }: {
-  icon: any;
-  text: string;
-  link?: string;
-  onClick?: () => void;
+  icon: any
+  text: string
+  link?: string
+  onClick?: () => void
 }) => {
   return (
     <div className='flex max-w-[70px]' onClick={onClick}>
@@ -84,11 +82,11 @@ const IconAction = ({
         <span className='text-[12px]'>{text}</span>
       </a>
     </div>
-  );
-};
+  )
+}
 
 const IconActions = ({ contacts }: { contacts: ContactProps }) => {
-  const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false);
+  const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false)
   return (
     <div className='my-6 flex flex-row justify-between'>
       <IconAction
@@ -111,17 +109,17 @@ const IconActions = ({ contacts }: { contacts: ContactProps }) => {
         setIsOpen={setIsDownloadDialogOpen}
       />
     </div>
-  );
-};
+  )
+}
 
 function ContactInfo({
   contacts,
   showInMenu = false,
 }: {
-  contacts: ContactProps;
-  showInMenu?: boolean;
+  contacts: ContactProps
+  showInMenu?: boolean
 }) {
-  const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false);
+  const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false)
   return (
     <div
       className={`${showInMenu ? 'flex gap-2 pt-6 text-left' : 'hidden text-right'} flex-col lg:flex`}
@@ -129,9 +127,7 @@ function ContactInfo({
       <a href={`tel:${contacts.officePhoneNumber1}`} className='text-xl'>
         {contacts.officePhoneNumber1}
       </a>
-      <div className='text-xs'>
-        {`Звоните, мы работаем ${contacts.openDays} ${contacts.openHours}`}
-      </div>
+      <div className='text-xs'>{`Звоните, мы работаем ${contacts.openDays} ${contacts.openHours}`}</div>
       <button
         onClick={() => setIsDownloadDialogOpen(true)}
         className='text-left text-sm text-secondary underline md:text-right'
@@ -143,7 +139,7 @@ function ContactInfo({
         setIsOpen={setIsDownloadDialogOpen}
       />
     </div>
-  );
+  )
 }
 
 export default function Navbar({
@@ -151,14 +147,14 @@ export default function Navbar({
   logoUrl,
   contacts,
 }: {
-  links: Array<NavLinkProps>;
-  logoUrl: string | null;
-  contacts: ContactProps;
+  links: Array<NavLinkProps>
+  logoUrl: string | null
+  contacts: ContactProps
 }) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const closeMenu = () => {
-    setMobileMenuOpen(false);
-  };
+    setMobileMenuOpen(false)
+  }
   return (
     <div
       id='navbar'
@@ -237,5 +233,5 @@ export default function Navbar({
         </button>
       </div>
     </div>
-  );
+  )
 }

@@ -1,17 +1,16 @@
-import { ProjectBreadcrumbs } from '@/app/catalog/[slug]/components/Breadcrumbs';
-import { ContentProps } from '@/app/utils/model';
-import React from 'react';
-import { Header } from '@/app/catalog/[slug]/components/Header';
-import { Gallery } from '@/app/catalog/[slug]/components/Gallery';
-import { ProjectDescription } from '@/app/catalog/[slug]/components/ProjectDescription';
-import { Disposition } from '@/app/catalog/[slug]/components/Disposition';
-import { ContactFormSection } from '@/app/web-components/ContactFormSection/ContactFormSection';
+import { ProjectBreadcrumbs } from '@/app/catalog/[slug]/components/Breadcrumbs'
+import { ContentProps } from '@/app/utils/model'
+import React from 'react'
+import { Header } from '@/app/catalog/[slug]/components/Header'
+import { Gallery } from '@/app/catalog/[slug]/components/Gallery'
+import { ProjectDescription } from '@/app/catalog/[slug]/components/ProjectDescription'
+import { Disposition } from '@/app/catalog/[slug]/components/Disposition'
+import { ContactFormSection } from '@/app/web-components/ContactFormSection/ContactFormSection'
 
 export const Content = ({ data }: ContentProps) => {
   const {
-    id,
     attributes: { title, exteriorGallery, interiorGallery },
-  } = data;
+  } = data
 
   return (
     <section className='text-black-100 bg-background py-8 md:pb-8 md:pt-4'>
@@ -38,5 +37,5 @@ export const Content = ({ data }: ContentProps) => {
       />
       <div className='mx-auto sm:container'>{/* {Similar projects} */}</div>
     </section>
-  );
-};
+  )
+}

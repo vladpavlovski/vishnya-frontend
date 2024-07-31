@@ -1,45 +1,45 @@
-'use client';
-import { ShortProject } from '@/app/utils/model';
-import { useEffect, useState } from 'react';
-import { CatalogCard } from '@/app/web-components/CatalogWidget/CatalogCard';
-import { fetchAPI } from '@/app/utils/fetch-api';
+'use client'
+import { ShortProject } from '@/app/utils/model'
+import { useEffect, useState } from 'react'
+import { CatalogCard } from '@/app/web-components/CatalogWidget/CatalogCard'
+import { fetchAPI } from '@/app/utils/fetch-api'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
+} from '@/components/ui/select'
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
-import Image from 'next/image';
-import filterIcon from '@/public/icons/filter.svg';
-import Loader from '@/app/web-components/Loader';
-import { DialogDownload } from '@/app/web-components/DialogDownload/DialogDownload';
+} from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
+import Image from 'next/image'
+import filterIcon from '@/public/icons/filter.svg'
+import Loader from '@/app/web-components/Loader'
+import { DialogDownload } from '@/app/web-components/DialogDownload/DialogDownload'
 
 interface CardRendererProps {
-  projects: ShortProject[];
-  inCatalog?: boolean;
-  title: string;
-  motivateQuestion: string;
-  fetchMore?: () => void;
-  noMoreProjects?: boolean;
-  isLoading?: boolean;
+  projects: ShortProject[]
+  inCatalog?: boolean
+  title: string
+  motivateQuestion: string
+  fetchMore?: () => void
+  noMoreProjects?: boolean
+  isLoading?: boolean
 }
 
 async function getProjects(filters: any): Promise<any> {
-  const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+  const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN
 
   if (!token)
-    throw new Error('The Strapi API Token environment variable is not set.');
+    throw new Error('The Strapi API Token environment variable is not set.')
 
-  const path = `/projects`;
-  const options = { headers: { Authorization: `Bearer ${token}` } };
+  const path = `/projects`
+  const options = { headers: { Authorization: `Bearer ${token}` } }
 
   const urlParamsObject = {
     fields: [
@@ -69,8 +69,8 @@ async function getProjects(filters: any): Promise<any> {
     filters: {
       $or: [...filters],
     },
-  };
-  return await fetchAPI(path, urlParamsObject, options);
+  }
+  return await fetchAPI(path, urlParamsObject, options)
 }
 
 const priceRange = [
@@ -90,72 +90,74 @@ const priceRange = [
     title: 'Больше 1 000 000',
     value: '1000001',
   },
-];
+]
 
 interface FiltersProps {
-  [key: string]: { [key: string]: string };
+  [key: string]: { [key: string]: string }
 }
 
 interface Props {
-  setProjects: (data: ShortProject[]) => void;
-  isMobileOpen: boolean;
-  setIsMobileOpen: (value: boolean) => void;
+  // eslint-disable-next-line no-unused-vars
+  setProjects: (data: ShortProject[]) => void
+  isMobileOpen: boolean
+  // eslint-disable-next-line no-unused-vars
+  setIsMobileOpen: (value: boolean) => void
 }
 
 const Filters = ({ setProjects, isMobileOpen, setIsMobileOpen }: Props) => {
-  const [filters, setFilters] = useState<FiltersProps[]>([]);
+  const [filters, setFilters] = useState<FiltersProps[]>([])
 
   const onFilterChange = async (value: string, filterProperty: string) => {
     const newFilter = {
       [filterProperty]: {
         $eq: value,
       },
-    };
+    }
     const newFilters = [
       ...filters.filter((filter) => filter[filterProperty] === undefined),
       newFilter,
-    ];
-    setFilters(newFilters);
-  };
+    ]
+    setFilters(newFilters)
+  }
 
   const onPriceFilterChange = async (value: string) => {
     let newFilter = {
       price: {},
-    };
+    }
 
     switch (value) {
       case '250000':
-        newFilter.price = { $lte: 250000 };
-        break;
+        newFilter.price = { $lte: 250000 }
+        break
       case '500000':
-        newFilter.price = { $gt: 250000, $lte: 500000 };
-        break;
+        newFilter.price = { $gt: 250000, $lte: 500000 }
+        break
       case '1000000':
-        newFilter.price = { $gt: 500000, $lte: 1000000 };
-        break;
+        newFilter.price = { $gt: 500000, $lte: 1000000 }
+        break
       case '1000001':
-        newFilter.price = { $gt: 1000000 };
-        break;
+        newFilter.price = { $gt: 1000000 }
+        break
     }
     const newFilters = [
       ...filters.filter((filter) => filter.price === undefined),
       newFilter,
-    ];
+    ]
 
-    setFilters(newFilters);
-  };
+    setFilters(newFilters)
+  }
 
   const handleSubmit = async () => {
-    const fetchedProjects = await getProjects(filters);
-    setProjects(fetchedProjects.data);
-    setIsMobileOpen(false);
-  };
+    const fetchedProjects = await getProjects(filters)
+    setProjects(fetchedProjects.data)
+    setIsMobileOpen(false)
+  }
 
   const filtersComponents = (
     <>
       <Select
         onValueChange={(value: string) => {
-          onFilterChange(value, 'purpose');
+          onFilterChange(value, 'purpose')
         }}
       >
         <SelectTrigger className='max-[220px] focus:ring-0 focus:ring-transparent focus:ring-offset-transparent'>
@@ -199,7 +201,7 @@ const Filters = ({ setProjects, isMobileOpen, setIsMobileOpen }: Props) => {
       </Select>
       <Select
         onValueChange={(value: string) => {
-          onPriceFilterChange(value);
+          onPriceFilterChange(value)
         }}
       >
         <SelectTrigger className='max-[220px] focus:ring-0 focus:ring-transparent focus:ring-offset-transparent'>
@@ -217,7 +219,7 @@ const Filters = ({ setProjects, isMobileOpen, setIsMobileOpen }: Props) => {
         Показать предложения
       </Button>
     </>
-  );
+  )
 
   return (
     <>
@@ -239,8 +241,8 @@ const Filters = ({ setProjects, isMobileOpen, setIsMobileOpen }: Props) => {
         </DialogContent>
       </Dialog>
     </>
-  );
-};
+  )
+}
 
 export const CardRenderer = ({
   title,
@@ -252,19 +254,19 @@ export const CardRenderer = ({
   isLoading = false,
 }: CardRendererProps) => {
   const [projectsFromFilters, setProjectsFromFilters] =
-    useState<ShortProject[]>(projects);
+    useState<ShortProject[]>(projects)
 
-  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
-  const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false);
-  const noProjectData = projectsFromFilters?.length === 0;
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false)
+  const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false)
+  const noProjectData = projectsFromFilters?.length === 0
 
   useEffect(() => {
-    setProjectsFromFilters(projects);
-  }, [projects]);
+    setProjectsFromFilters(projects)
+  }, [projects])
 
   const toggleMobileFilter = () => {
-    setIsMobileFilterOpen((state) => !state);
-  };
+    setIsMobileFilterOpen((state) => !state)
+  }
 
   const children = (
     <>
@@ -333,7 +335,7 @@ export const CardRenderer = ({
         setIsOpen={setIsDownloadDialogOpen}
       />
     </>
-  );
+  )
 
   return inCatalog ? (
     <section className='text-black-100 bg-background py-16 md:pb-8 md:pt-16'>
@@ -341,5 +343,5 @@ export const CardRenderer = ({
     </section>
   ) : (
     <>{children}</>
-  );
-};
+  )
+}

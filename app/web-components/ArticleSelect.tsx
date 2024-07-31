@@ -1,28 +1,28 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
 interface Category {
-  id: number;
+  id: number
   attributes: {
-    name: string;
-    slug: string;
+    name: string
+    slug: string
     articles: {
-      data: Array<{}>;
-    };
-  };
+      data: Array<{}>
+    }
+  }
 }
 
 interface Article {
-  id: number;
+  id: number
   attributes: {
-    title: string;
-    slug: string;
-  };
+    title: string
+    slug: string
+  }
 }
 
 function selectedFilter(current: string, selected: string) {
   return current === selected
     ? 'px-3 py-1 rounded-lg hover:underline dark:bg-violet-700 dark:text-gray-100'
-    : 'px-3 py-1 rounded-lg hover:underline dark:bg-violet-400 dark:text-gray-900';
+    : 'px-3 py-1 rounded-lg hover:underline dark:bg-violet-400 dark:text-gray-900'
 }
 
 export default function ArticleSelect({
@@ -30,12 +30,12 @@ export default function ArticleSelect({
   articles,
   params,
 }: {
-  categories: Category[];
-  articles: Article[];
+  categories: Category[]
+  articles: Article[]
   params: {
-    slug: string;
-    category: string;
-  };
+    slug: string
+    category: string
+  }
 }) {
   return (
     <div className='relative min-h-[365px] rounded-lg p-4 dark:bg-gray-900'>
@@ -44,7 +44,7 @@ export default function ArticleSelect({
       <div>
         <div className='flex flex-wrap space-x-2 py-6 dark:border-gray-400'>
           {categories.map((category: Category) => {
-            if (category.attributes.articles.data.length === 0) return null;
+            if (category.attributes.articles.data.length === 0) return null
             return (
               <Link
                 key={category.id}
@@ -56,7 +56,7 @@ export default function ArticleSelect({
               >
                 #{category.attributes.name}
               </Link>
-            );
+            )
           })}
           <Link href={'/blog'} className={selectedFilter('', 'filter')}>
             #all
@@ -75,16 +75,16 @@ export default function ArticleSelect({
                     className={`${
                       params.slug === article.attributes.slug &&
                       'text-violet-400'
-                    }  transition-colors duration-200 hover:text-violet-400 hover:underline`}
+                    } transition-colors duration-200 hover:text-violet-400 hover:underline`}
                   >
                     {article.attributes.title}
                   </Link>
                 </li>
-              );
+              )
             })}
           </ul>
         </div>
       </div>
     </div>
-  );
+  )
 }

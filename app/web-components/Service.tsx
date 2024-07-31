@@ -1,18 +1,18 @@
-import { Picture } from '@/app/utils/model';
-import { BlocksRenderer } from '@strapi/blocks-react-renderer';
-import { getStrapiURL } from '@/app/utils/api-helpers';
-import Image from 'next/image';
+import { Picture } from '@/app/utils/model'
+import { BlocksRenderer } from '@strapi/blocks-react-renderer'
+import { getStrapiURL } from '@/app/utils/api-helpers'
+import Image from 'next/image'
 
 interface ServiceProps {
   data: {
-    title: string;
-    description: [];
-    backgroundImage: Picture;
-    backgroundPhrase: string;
-  };
+    title: string
+    description: []
+    backgroundImage: Picture
+    backgroundPhrase: string
+  }
 }
 export const Service = ({ data }: ServiceProps) => {
-  const { title, description, backgroundImage, backgroundPhrase } = data;
+  const { title, description, backgroundImage, backgroundPhrase } = data
 
   return (
     <section className='mx-auto max-w-7xl bg-background md:pb-16 md:pt-48 lg:px-8'>
@@ -47,5 +47,5 @@ export const Service = ({ data }: ServiceProps) => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}

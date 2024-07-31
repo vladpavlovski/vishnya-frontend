@@ -1,37 +1,37 @@
-import classNames from 'classnames';
+import classNames from 'classnames'
 
 function colors(type: string) {
   switch (type) {
     case 'info':
-      return 'bg-violet-400';
+      return 'bg-violet-400'
     case 'warning':
-      return 'bg-yellow-500';
+      return 'bg-yellow-500'
     case 'alert':
-      return 'bg-pink-500';
+      return 'bg-pink-500'
     default:
-      return 'bg-gray-900';
+      return 'bg-gray-900'
   }
 }
 
 interface BannerProps {
   data: {
-    heading: string;
-    text: string;
-    type: string;
-    show: boolean;
+    heading: string
+    text: string
+    type: string
+    show: boolean
     link: {
-      id: number;
-      url: string;
-      newTab: boolean;
-      text: string;
-    };
-  } | null;
+      id: number
+      url: string
+      newTab: boolean
+      text: string
+    }
+  } | null
 }
 
 export default function Banner({ data }: BannerProps) {
-  if (!data) return null;
-  const { heading, text, type, show, link } = data;
-  if (!show) return null;
+  if (!data) return null
+  const { heading, text, type, show, link } = data
+  if (!show) return null
   return (
     <div className='pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8'>
       <div
@@ -48,5 +48,5 @@ export default function Banner({ data }: BannerProps) {
         </p>
       </div>
     </div>
-  );
+  )
 }

@@ -1,5 +1,6 @@
-import Link from 'next/link';
-import Image from 'next/image';
+import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Logo({
   src,
@@ -7,10 +8,10 @@ export default function Logo({
   width = 45,
   height = 45,
 }: {
-  src: string | null;
-  children?: React.ReactNode;
-  width?: number;
-  height?: number;
+  src: string | null
+  children?: React.ReactNode
+  width?: number
+  height?: number
 }) {
   return (
     <Link
@@ -30,5 +31,5 @@ export default function Logo({
       )}
       <div className='ml-2'>{children}</div>
     </Link>
-  );
+  )
 }
